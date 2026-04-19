@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MUDr. Zuzana Samcová – endokrinologická ambulancia v Žiline. Diagnostika a liečba ochorení štítnej žľazy, diabetu, obezity a hormonálnych porúch. Budova Medivi, M. R. Štefánika 842/47.">
+    <meta name="keywords" content="endokrinológia, Žilina, štítna žľaza, diabetes, hormóny, MUDr. Samcová, Medivi">
+    <title>MUDr. Zuzana Samcová – Endokrinológia Žilina</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Cursor glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- ========================
+         NAVBAR
+         ======================== -->
+    <header class="navbar" id="navbar">
+        <div class="container">
+            <a href="#hero" class="navbar-brand">
+                <div class="brand-initials">ZS</div>
+                <div class="brand-text">
+                    <span class="brand-name">MUDr. Zuzana Samcová</span>
+                    <span class="brand-title">Endokrinológia · Žilina</span>
+                </div>
+            </a>
+
+            <nav class="navbar-nav" id="navMenu" role="navigation" aria-label="Hlavná navigácia">
+                <a href="#o-mne" class="nav-link">O mne</a>
+                <a href="#sluzby" class="nav-link">Služby</a>
+                <a href="#pacienti" class="nav-link">Pre pacientov</a>
+                <a href="#kontakt" class="nav-link">Kontakt</a>
+                <a href="#kontakt" class="btn btn-primary btn-sm nav-cta">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    Objednať sa
+                </a>
+            </nav>
+
+            <button class="hamburger" id="hamburger" aria-label="Otvoriť menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ========================
+             HERO
+             ======================== -->
+        <section class="hero" id="hero">
+            <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
+            <div class="hero-bg">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+                <div class="blob blob-3"></div>
+                <div class="hero-grid-overlay"></div>
+            </div>
+
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        Endokrinologická ambulancia · Budova Medivi · Žilina
+                    </div>
+
+                    <h1 class="hero-title">
+                        <span class="hero-title-line">MUDr. Zuzana</span>
+                        <span class="hero-title-name">Samcová</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Odborná starostlivosť o hormonálne zdravie.<br>
+                        Moderná endokrinológia — s dôrazom na každého pacienta.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#kontakt" class="btn btn-light btn-lg">
+                            <i class="fa-solid fa-calendar-check"></i>
+                            Objednať sa
+                        </a>
+                        <a href="#sluzby" class="btn btn-outline-light btn-lg">
+                            Zistiť viac
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+                    </div>
+
+                    <div class="hero-insurance">
+                        <span class="insurance-label">Zmluva so všetkými poisťovňami:</span>
+                        <div class="insurance-pills">
+                            <span class="insurance-pill">VšZP</span>
+                            <span class="insurance-pill">Dôvera</span>
+                            <span class="insurance-pill">Union</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="hero-card hero-card--float">
+                        <div class="hero-card-icon"><i class="fa-solid fa-stethoscope"></i></div>
+                        <div class="hero-card-text">
+                            <strong>Komplexná diagnostika</strong>
+                            <span>Hormonálne vyšetrenia</span>
+                        </div>
+                    </div>
+                    <div class="hero-card hero-card--float hero-card--delay">
+                        <div class="hero-card-icon hero-card-icon--violet"><i class="fa-solid fa-ribbon"></i></div>
+                        <div class="hero-card-text">
+                            <strong>Štítna žľaza</strong>
+                            <span>Špecializovaná liečba</span>
+                        </div>
+                    </div>
+                    <div class="hero-stat-ring">
+                        <svg viewBox="0 0 120 120" class="ring-svg">
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="url(#ringGrad)" stroke-width="8"
+                                stroke-dasharray="220 314" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+                            <defs>
+                                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#2DD4BF"/>
+                                    <stop offset="100%" stop-color="#A78BFA"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="ring-inner">
+                            <span class="ring-number">11<sup>+</sup></span>
+                            <span class="ring-label">rokov praxe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#o-mne" class="hero-scroll-indicator" aria-label="Scrollovať nadol">
+                <div class="scroll-mouse">
+                    <div class="scroll-dot"></div>
+                </div>
+            </a>
+        </section>
+
+        <!-- ========================
+             STATS BAR
+             ======================== -->
+        <section class="stats-bar" aria-label="Kľúčové fakty">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item reveal">
+                        <div class="stat-icon-wrap"><i class="fa-solid fa-clock"></i></div>
+                        <div class="stat-body">
+                            <span class="stat-number" data-target="11">0</span><span class="stat-suffix">+</span>
+                            <span class="stat-label">rokov praxe</span>
+                        </div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item reveal" style="--reveal-delay: 0.1s">
+                        <div class="stat-icon-wrap"><i class="fa-solid fa-microscope"></i></div>
+                        <div class="stat-body">
+                            <span class="stat-number" data-target="6">0</span>
+                            <span class="stat-label">oblastí špecializácie</span>
+                        </div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item reveal" style="--reveal-delay: 0.2s">
+                        <div class="stat-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="stat-body">
+                            <span class="stat-number" data-target="3">0</span>
+                            <span class="stat-label">zdravotné poisťovne</span>
+                        </div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item reveal" style="--reveal-delay: 0.3s">
+                        <div class="stat-icon-wrap"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="stat-body">
+                            <span class="stat-text">Budova Medivi</span>
+                            <span class="stat-label">M. R. Štefánika, Žilina</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             O MNE
+             ======================== -->
+        <section class="section" id="o-mne" aria-labelledby="about-heading">
+            <div class="container">
+                <div class="about-grid">
+
+                    <div class="about-photo-col reveal">
+                        <div class="photo-frame">
+                            <div class="photo-placeholder">
+                                <i class="fa-solid fa-user-doctor"></i>
+                                <span class="photo-initials">Z.S.</span>
+                            </div>
+                            <div class="photo-badge">
+                                <i class="fa-solid fa-star"></i>
+                                Odborný lekár
+                            </div>
+                            <div class="photo-decor photo-decor--1"></div>
+                            <div class="photo-decor photo-decor--2"></div>
+                        </div>
+                    </div>
+
+                    <div class="about-content">
+                        <div class="section-eyebrow reveal">O mne</div>
+                        <h2 class="section-title reveal" id="about-heading" style="--reveal-delay: 0.1s">
+                            Starostlivosť<br>s <span class="gradient-text">odbornosťou</span> a ľudskosťou
+                        </h2>
+                        <p class="about-text reveal" style="--reveal-delay: 0.2s">
+                            Medicínu som vyštudovala na Lekárskej fakulte Univerzity Palackého v Olomouci.
+                            Klinické skúsenosti som nadobúdala vo Fakultnej nemocnici v Žiline, v Nemocnici Třinec
+                            a na NsP Považská Bystrica. Svoju kariéru som začínala na pneumologickom oddelení,
+                            kde som získala cenné skúsenosti v diagnostike a liečbe pľúcnych ochorení.
+                        </p>
+                        <p class="about-text reveal" style="--reveal-delay: 0.25s">
+                            Neskôr som prešla na interné oddelenie, kde som sa naplno venovala endokrinológii —
+                            odboru, v ktorom som v roku 2023 získala atestáciu na SZÚ v Bratislave.
+                            Od apríla 2026 pôsobím v Endokrinologickej ambulancii v budove Medivi v Žiline,
+                            kde sa s radosťou venujem každému pacientovi individuálne.
+                        </p>
+
+                        <div class="career-section reveal" style="--reveal-delay: 0.3s">
+                            <span class="insurance-label-dark">Pracovná kariéra:</span>
+                            <div class="career-timeline">
+                                <div class="ct-item ct-item--current">
+                                    <div class="ct-dot"></div>
+                                    <div class="ct-body">
+                                        <strong>Endokrinologická ambulancia · Medivi, Žilina</strong>
+                                        <span>apríl 2026 – súčasnosť</span>
+                                    </div>
+                                </div>
+                                <div class="ct-item">
+                                    <div class="ct-dot"></div>
+                                    <div class="ct-body">
+                                        <strong>Interné odd. NsP Považská Bystrica · endokrinológ</strong>
+                                        <span>november 2023 – marec 2026</span>
+                                    </div>
+                                </div>
+                                <div class="ct-item">
+                                    <div class="ct-dot"></div>
+                                    <div class="ct-body">
+                                        <strong>Interné odd. NsP Považská Bystrica · sekundárny lekár</strong>
+                                        <span>október 2015 – október 2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="insurance-section reveal" style="--reveal-delay: 0.4s">
+                            <span class="insurance-label-dark">Zmluva s poisťovňami:</span>
+                            <div class="insurance-row">
+                                <div class="insurance-card">
+                                    <span class="insurer-abbr">VšZP</span>
+                                    <span class="insurer-name">Všeobecná zdravotná</span>
+                                </div>
+                                <div class="insurance-card">
+                                    <span class="insurer-abbr">Dôvera</span>
+                                    <span class="insurer-name">Zdravotná poisťovňa</span>
+                                </div>
+                                <div class="insurance-card">
+                                    <span class="insurer-abbr">Union</span>
+                                    <span class="insurer-name">Zdravotná poisťovňa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             PARALLAX BANNER
+             ======================== -->
+        <section class="parallax-banner" aria-label="Kľúčové fakty o ambulancii">
+            <div class="container">
+                <div class="parallax-content">
+                    <div class="parallax-stat">
+                        <div class="parallax-stat-number">11<sup>+</sup></div>
+                        <div class="parallax-stat-label">rokov klinickej<br>praxe</div>
+                    </div>
+                    <div class="parallax-stat">
+                        <div class="parallax-stat-number">2023</div>
+                        <div class="parallax-stat-label">rok atestácie<br>z endokrinológie</div>
+                    </div>
+                    <div class="parallax-stat">
+                        <div class="parallax-stat-number">6</div>
+                        <div class="parallax-stat-label">oblastí<br>špecializácie</div>
+                    </div>
+                    <div class="parallax-stat">
+                        <div class="parallax-stat-number">3</div>
+                        <div class="parallax-stat-label">zdravotné<br>poisťovne</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             SLUŽBY
+             ======================== -->
+        <section class="section section-alt" id="sluzby" aria-labelledby="services-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-eyebrow reveal">Čo liečim</div>
+                    <h2 class="section-title reveal" id="services-heading" style="--reveal-delay: 0.1s">
+                        Oblasti <span class="gradient-text">starostlivosti</span>
+                    </h2>
+                    <p class="section-subtitle reveal" style="--reveal-delay: 0.2s">
+                        Komplexná endokrinologická starostlivosť zahŕňajúca diagnostiku,
+                        liečbu a dlhodobé sledovanie hormonálnych ochorení.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+
+                    <article class="service-card reveal">
+                            <div class="card-shine"></div>
+                        <div class="service-icon service-icon--teal">
+                            <i class="fa-solid fa-ribbon"></i>
+                        </div>
+                        <h3 class="service-title">Štítna žľaza</h3>
+                        <p class="service-text">
+                            Hypotyreóza, hypertyreóza, uzlíky štítnej žľazy, zápalové ochorenia
+                            (Hashimoto, Graves-Basedow) a nádorové ochorenia štítnej žľazy.
+                        </p>
+                        <div class="service-tags">
+                            <span class="tag">Tyreostatická liečba</span>
+                            <span class="tag">Hormóny štítnej žľazy</span>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal" style="--reveal-delay: 0.1s">
+                            <div class="card-shine"></div>
+                        <div class="service-icon service-icon--blue">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <h3 class="service-title">Diabetes mellitus</h3>
+                        <p class="service-text">
+                            Komplexná starostlivosť o pacientov s cukrovkou 1. a 2. typu vrátane
+                            nastavenia inzulínovej terapie a kontinuálneho monitorovania glukózy.
+                        </p>
+                        <div class="service-tags">
+                            <span class="tag">Typ 1 a 2</span>
+                            <span class="tag">Inzulínová terapia</span>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal" style="--reveal-delay: 0.2s">
+                            <div class="card-shine"></div>
+                        <div class="service-icon service-icon--violet">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="service-title">Obezita a metabolizmus</h3>
+                        <p class="service-text">
+                            Diagnostika a liečba obezity, metabolického syndrómu a porúch
+                            lipidového metabolizmu s individuálnym prístupom ku každému pacientovi.
+                        </p>
+                        <div class="service-tags">
+                            <span class="tag">Metabolický syndróm</span>
+                            <span class="tag">Dyslipidémia</span>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal" style="--reveal-delay: 0.05s">
+                            <div class="card-shine"></div>
+                        <div class="service-icon service-icon--pink">
+                            <i class="fa-solid fa-flask-vial"></i>
+                        </div>
+                        <h3 class="service-title">Hormónové poruchy</h3>
+                        <p class="service-text">
+                            Diagnostika porúch hypofýzy, pohlavných hormónov a nadobličiek.
+                            Poruchy menštruačného cyklu a hormonálna nerovnováha.
+                        </p>
+                        <div class="service-tags">
+                            <span class="tag">Hormónové testy</span>
+                            <span class="tag">Hypofýza</span>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal" style="--reveal-delay: 0.15s">
+                            <div class="card-shine"></div>
+                        <div class="service-icon service-icon--amber">
+                            <i class="fa-solid fa-bone"></i>
+                        </div>
+                        <h3 class="service-title">Osteoporóza</h3>
+                        <p class="service-text">
+                            Diagnostika a liečba osteoporózy, meranie kostnej denzity,
+                            prevencia zlomenín a komplexná starostlivosť o zdravie kostí.
+                        </p>
+                        <div class="service-tags">
+                            <span class="tag">DXA meranie</span>
+                            <span class="tag">Prevencia zlomenín</span>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal" style="--reveal-delay: 0.25s">
+                            <div class="card-shine"></div>
+                        <div class="service-icon service-icon--green">
+                            <i class="fa-solid fa-circle-nodes"></i>
+                        </div>
+                        <h3 class="service-title">Nadobličky a hypofýza</h3>
+                        <p class="service-text">
+                            Ochorenia nadobličiek (Addisonova choroba, Cushingov syndróm),
+                            nádory nadobličiek a poruchy prednej i zadnej hypofýzy.
+                        </p>
+                        <div class="service-tags">
+                            <span class="tag">Cushingov syndróm</span>
+                            <span class="tag">Addisonova choroba</span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             INTERAKTÍVNA ENDOKRINNÁ MAPA
+             ======================== -->
+        <section class="section section-endo" id="endo-mapa" aria-labelledby="endo-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-eyebrow reveal">Interaktívna mapa</div>
+                    <h2 class="section-title reveal" id="endo-heading" style="--reveal-delay:0.1s">
+                        Endokrinný <span class="gradient-text">systém</span>
+                    </h2>
+                    <p class="section-subtitle reveal" style="--reveal-delay:0.2s">
+                        Kliknite na žľazu a zistite viac o jej funkcii a ochoreniach, ktoré liečime.
+                    </p>
+                </div>
+
+                <div class="endo-layout">
+                    <!-- SVG Diagram -->
+                    <div class="endo-diagram-wrap reveal">
+                        <svg id="endoSvg" viewBox="0 0 400 548" class="endo-svg" aria-label="Interaktívna mapa endokrinného systému">
+                            <defs>
+                                <!-- Glow filters -->
+                                <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                                <filter id="bodyGlowF" x="-15%" y="-5%" width="130%" height="110%">
+                                    <feGaussianBlur stdDeviation="7" result="coloredBlur"/>
+                                    <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                                <!-- Body gradient -->
+                                <linearGradient id="bodyFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%"   stop-color="#1E3A5F" stop-opacity="0.55"/>
+                                    <stop offset="50%"  stop-color="#0D1B2A" stop-opacity="0.45"/>
+                                    <stop offset="100%" stop-color="#091220" stop-opacity="0.35"/>
+                                </linearGradient>
+                                <!-- Clip path = full body shape -->
+                                <clipPath id="bodyClip">
+                                    <ellipse cx="200" cy="58" rx="46" ry="54"/>
+                                    <path d="M 192,108 C 180,116 158,130 134,146 C 112,160 107,185 112,225 C 114,255 120,280 125,320 C 122,356 112,380 115,434 L 285,434 C 288,380 278,356 275,320 C 280,280 286,255 288,225 C 293,185 288,160 266,146 C 242,130 220,116 208,108 Z"/>
+                                </clipPath>
+                            </defs>
+
+                            <!-- ══ BODY SILHOUETTE ══ -->
+                            <!-- Head -->
+                            <ellipse cx="200" cy="58" rx="44" ry="52"
+                                     fill="url(#bodyFill)"
+                                     stroke="rgba(94,234,212,0.45)" stroke-width="1.8"
+                                     filter="url(#bodyGlowF)"/>
+                            <!-- Torso (includes neck curve to shoulders) -->
+                            <path d="M 192,108 C 180,116 158,130 134,146 C 112,160 107,185 112,225 C 114,255 120,280 125,320 C 122,356 112,380 115,434 L 285,434 C 288,380 278,356 275,320 C 280,280 286,255 288,225 C 293,185 288,160 266,146 C 242,130 220,116 208,108 Z"
+                                  fill="url(#bodyFill)"
+                                  stroke="rgba(94,234,212,0.40)" stroke-width="1.8"
+                                  filter="url(#bodyGlowF)"/>
+                            <!-- Neck fill (bridge between head and torso) -->
+                            <rect x="189" y="106" width="22" height="38" rx="4"
+                                  fill="url(#bodyFill)" stroke="none" opacity="0.9"/>
+
+                            <!-- Body region highlights (clipped to body) -->
+                            <!-- Brain zone – violet -->
+                            <ellipse cx="200" cy="46" rx="32" ry="28" fill="rgba(167,139,250,0.10)" clip-path="url(#bodyClip)"/>
+                            <!-- Neck/thyroid zone – teal -->
+                            <ellipse cx="200" cy="138" rx="20" ry="16" fill="rgba(45,212,191,0.10)" clip-path="url(#bodyClip)"/>
+                            <!-- Abdominal zone – warm amber (adrenal + pancreas) -->
+                            <ellipse cx="200" cy="284" rx="72" ry="50" fill="rgba(251,146,60,0.07)" clip-path="url(#bodyClip)"/>
+                            <!-- Pelvic zone – green -->
+                            <ellipse cx="200" cy="398" rx="55" ry="36" fill="rgba(52,211,153,0.08)" clip-path="url(#bodyClip)"/>
+
+                            <!-- Spine guide line -->
+                            <line x1="200" y1="112" x2="200" y2="428"
+                                  stroke="rgba(255,255,255,0.07)" stroke-width="1.5" stroke-dasharray="3 6"/>
+
+                            <!-- ══ CONNECTION LINES (animated dashes from pituitary) ══ -->
+                            <g class="endo-connections" opacity="0.5">
+                                <line x1="200" y1="58"  x2="200" y2="134" class="endo-line" stroke="#A78BFA"/>
+                                <line x1="196" y1="60"  x2="153" y2="263" class="endo-line endo-line--long" stroke="#A78BFA"/>
+                                <line x1="204" y1="60"  x2="247" y2="263" class="endo-line endo-line--long" stroke="#A78BFA"/>
+                                <line x1="198" y1="62"  x2="193" y2="285" class="endo-line endo-line--long" stroke="#A78BFA"/>
+                                <line x1="200" y1="64"  x2="200" y2="385" class="endo-line endo-line--long" stroke="#A78BFA"/>
+                                <line x1="188" y1="140" x2="183" y2="137" class="endo-line endo-line--short" stroke="#60A5FA"/>
+                            </g>
+
+                            <!-- ══ GLAND NODES ══ -->
+
+                            <!-- 1. Hypofýza (pituitary) – violet, inside brain -->
+                            <g class="endo-node" data-id="pituitary" tabindex="0" role="button" aria-label="Hypofýza">
+                                <circle cx="200" cy="44" r="24" class="node-pulse" fill="rgba(167,139,250,0.18)"/>
+                                <circle cx="200" cy="44" r="14" fill="rgba(167,139,250,0.28)" stroke="#A78BFA" stroke-width="1.8" class="node-ring"/>
+                                <circle cx="200" cy="44" r="7"  fill="#A78BFA" class="node-core" filter="url(#glow)"/>
+                                <!-- Label: above head -->
+                                <line  x1="200" y1="28"  x2="200" y2="16"  stroke="#A78BFA" stroke-width="0.9" opacity="0.7"/>
+                                <circle cx="200" cy="16" r="2.5" fill="#A78BFA"/>
+                                <text x="200" y="10" class="node-label" fill="#A78BFA" text-anchor="middle">Hypofýza</text>
+                            </g>
+
+                            <!-- 2. Štítna žľaza (thyroid) – teal butterfly -->
+                            <g class="endo-node" data-id="thyroid" tabindex="0" role="button" aria-label="Štítna žľaza">
+                                <circle cx="200" cy="140" r="24" class="node-pulse" fill="rgba(45,212,191,0.15)"/>
+                                <!-- Left lobe -->
+                                <ellipse cx="188" cy="140" rx="13" ry="9" class="node-core thyroid-lobe" fill="rgba(45,212,191,0.38)" stroke="#2DD4BF" stroke-width="1.8"/>
+                                <!-- Right lobe -->
+                                <ellipse cx="212" cy="140" rx="13" ry="9" class="node-core thyroid-lobe" fill="rgba(45,212,191,0.38)" stroke="#2DD4BF" stroke-width="1.8"/>
+                                <!-- Isthmus -->
+                                <ellipse cx="200" cy="142" rx="4.5" ry="3.5" fill="rgba(45,212,191,0.55)" stroke="#2DD4BF" stroke-width="1"/>
+                                <circle cx="200" cy="140" r="4" fill="#2DD4BF" filter="url(#glow)"/>
+                                <!-- Label: right side -->
+                                <line  x1="220" y1="140" x2="270" y2="140" stroke="#2DD4BF" stroke-width="0.9" opacity="0.7"/>
+                                <circle cx="270" cy="140" r="2.5" fill="#2DD4BF"/>
+                                <text x="274" y="144" class="node-label" fill="#2DD4BF" text-anchor="start">Štítna žľaza</text>
+                            </g>
+
+                            <!-- 3. Prištítne žľazy (parathyroid) – blue, 4 tiny glands -->
+                            <g class="endo-node" data-id="parathyroid" tabindex="0" role="button" aria-label="Prištítne žľazy">
+                                <circle cx="183" cy="137" r="16" class="node-pulse" fill="rgba(96,165,250,0.12)"/>
+                                <!-- 4 small parathyroid glands as tiny ovals, 2×2 grid -->
+                                <ellipse cx="179" cy="133" rx="4.5" ry="3.5" class="node-core" fill="rgba(96,165,250,0.45)" stroke="#60A5FA" stroke-width="1.2"/>
+                                <ellipse cx="187" cy="133" rx="4.5" ry="3.5" class="node-core" fill="rgba(96,165,250,0.45)" stroke="#60A5FA" stroke-width="1.2"/>
+                                <ellipse cx="179" cy="141" rx="4.5" ry="3.5" class="node-core" fill="rgba(96,165,250,0.45)" stroke="#60A5FA" stroke-width="1.2"/>
+                                <ellipse cx="187" cy="141" rx="4.5" ry="3.5" class="node-core" fill="rgba(96,165,250,0.45)" stroke="#60A5FA" stroke-width="1.2"/>
+                                <circle cx="183" cy="137" r="3" fill="#60A5FA" filter="url(#glow)" opacity="0.7"/>
+                                <!-- Label: left side -->
+                                <line  x1="172" y1="135" x2="124" y2="128" stroke="#60A5FA" stroke-width="0.9" opacity="0.7"/>
+                                <circle cx="124" cy="128" r="2.5" fill="#60A5FA"/>
+                                <text x="120" y="132" class="node-label" fill="#60A5FA" text-anchor="end">Prištítne žľazy</text>
+                            </g>
+
+                            <!-- 4. Nadobličky (adrenal) – pink, bilateral pyramids -->
+                            <g class="endo-node" data-id="adrenal" tabindex="0" role="button" aria-label="Nadobličky">
+                                <circle cx="150" cy="268" r="22" class="node-pulse" fill="rgba(244,114,182,0.12)"/>
+                                <circle cx="250" cy="268" r="22" class="node-pulse" fill="rgba(244,114,182,0.12)"/>
+                                <!-- Adrenal cap L -->
+                                <path d="M 141,266 L 150,252 L 159,266 Z" class="node-core" fill="rgba(244,114,182,0.42)" stroke="#F472B6" stroke-width="1.8" stroke-linejoin="round"/>
+                                <circle cx="150" cy="263" r="4" fill="#F472B6" filter="url(#glow)"/>
+                                <!-- Adrenal cap R -->
+                                <path d="M 241,266 L 250,252 L 259,266 Z" class="node-core" fill="rgba(244,114,182,0.42)" stroke="#F472B6" stroke-width="1.8" stroke-linejoin="round"/>
+                                <circle cx="250" cy="263" r="4" fill="#F472B6" filter="url(#glow)"/>
+                                <!-- Label: left side -->
+                                <line  x1="135" y1="264" x2="84"  y2="264" stroke="#F472B6" stroke-width="0.9" opacity="0.7"/>
+                                <circle cx="84"  cy="264" r="2.5" fill="#F472B6"/>
+                                <text x="80" y="268" class="node-label" fill="#F472B6" text-anchor="end">Nadobličky</text>
+                            </g>
+
+                            <!-- 5. Pankreas – orange, elongated shape (no CSS rotation) -->
+                            <g class="endo-node" data-id="pancreas" tabindex="0" role="button" aria-label="Pankreas">
+                                <circle cx="193" cy="292" r="22" class="node-pulse" fill="rgba(251,146,60,0.12)"/>
+                                <!-- Pancreas body: elongated path, baked rotation to avoid CSS transform issues -->
+                                <path d="M 171,295 C 174,284 198,282 215,288 C 226,294 218,304 200,304 C 182,304 170,303 171,295 Z"
+                                      class="node-core" fill="rgba(251,146,60,0.38)" stroke="#FB923C" stroke-width="1.8"/>
+                                <circle cx="193" cy="292" r="4.5" fill="#FB923C" filter="url(#glow)"/>
+                                <!-- Label: right side -->
+                                <line  x1="213" y1="292" x2="264" y2="292" stroke="#FB923C" stroke-width="0.9" opacity="0.7"/>
+                                <circle cx="264" cy="292" r="2.5" fill="#FB923C"/>
+                                <text x="268" y="296" class="node-label" fill="#FB923C" text-anchor="start">Pankreas</text>
+                            </g>
+
+                            <!-- 6. Pohlavné žľazy – green, bilateral ovals -->
+                            <g class="endo-node" data-id="gonads" tabindex="0" role="button" aria-label="Pohlavné žľazy">
+                                <circle cx="182" cy="395" r="20" class="node-pulse" fill="rgba(52,211,153,0.12)"/>
+                                <circle cx="218" cy="395" r="20" class="node-pulse" fill="rgba(52,211,153,0.12)"/>
+                                <!-- Oval glands L & R -->
+                                <ellipse cx="182" cy="395" rx="11" ry="14" class="node-core" fill="rgba(52,211,153,0.38)" stroke="#34D399" stroke-width="1.8"/>
+                                <circle  cx="182" cy="395" r="4.5" fill="#34D399" filter="url(#glow)"/>
+                                <ellipse cx="218" cy="395" rx="11" ry="14" class="node-core" fill="rgba(52,211,153,0.38)" stroke="#34D399" stroke-width="1.8"/>
+                                <circle  cx="218" cy="395" r="4.5" fill="#34D399" filter="url(#glow)"/>
+                                <!-- Label: below -->
+                                <line  x1="200" y1="414" x2="200" y2="426" stroke="#34D399" stroke-width="0.9" opacity="0.7"/>
+                                <circle cx="200" cy="426" r="2.5" fill="#34D399"/>
+                                <text x="200" y="437" class="node-label" fill="#34D399" text-anchor="middle">Pohlavné žľazy</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- Info panel -->
+                    <div class="endo-info" id="endoInfo">
+                        <div class="endo-default reveal" style="--reveal-delay:0.25s">
+                            <div class="endo-default-icon">
+                                <i class="fa-solid fa-hand-pointer"></i>
+                            </div>
+                            <p>Kliknite na žľazu v diagrame a zobrazte si podrobné informácie o jej funkcii a ochoreniach.</p>
+                        </div>
+                        <div class="endo-panel" id="endoPanel" hidden>
+                            <div class="endo-panel-header">
+                                <div class="endo-panel-dot" id="endoDot"></div>
+                                <h3 class="endo-panel-title" id="endoTitle"></h3>
+                                <button class="endo-close" id="endoClose" aria-label="Zavrieť">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                            <div class="endo-panel-body">
+                                <div class="endo-hormones" id="endoHormones"></div>
+                                <p class="endo-desc" id="endoDesc"></p>
+                                <div class="endo-diseases" id="endoDiseases"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             PRE PACIENTOV
+             ======================== -->
+        <section class="section" id="pacienti" aria-labelledby="patient-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-eyebrow reveal">Pre pacientov</div>
+                    <h2 class="section-title reveal" id="patient-heading" style="--reveal-delay: 0.1s">
+                        Praktické <span class="gradient-text">informácie</span>
+                    </h2>
+                    <p class="section-subtitle reveal" style="--reveal-delay: 0.2s">
+                        Všetko, čo potrebujete vedieť pred a po návšteve ambulancie.
+                    </p>
+                </div>
+
+                <div class="patient-layout">
+
+                    <div class="accordion reveal" role="list">
+
+                        <div class="accordion-item" role="listitem">
+                            <button class="accordion-header" aria-expanded="false">
+                                <div class="accordion-icon">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                </div>
+                                <span>Prvá návšteva — čo priniesť</span>
+                                <i class="fa-solid fa-chevron-down accordion-arrow" aria-hidden="true"></i>
+                            </button>
+                            <div class="accordion-body" role="region">
+                                <div class="accordion-body-inner">
+                                    <ul class="info-list">
+                                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Preukaz poistenca (zdravotná kartička)</li>
+                                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Výmenný lístok od obvodného lekára</li>
+                                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Predchádzajúce výsledky vyšetrení (ak máte)</li>
+                                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Zoznam užívaných liekov vrátane doplnkov</li>
+                                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Prepúšťacie správy z nemocnice (ak sú relevantné)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" role="listitem">
+                            <button class="accordion-header" aria-expanded="false">
+                                <div class="accordion-icon">
+                                    <i class="fa-solid fa-vials"></i>
+                                </div>
+                                <span>Príprava na odber krvi</span>
+                                <i class="fa-solid fa-chevron-down accordion-arrow" aria-hidden="true"></i>
+                            </button>
+                            <div class="accordion-body" role="region">
+                                <div class="accordion-body-inner">
+                                    <ul class="info-list">
+                                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Prísť nalačno — minimálne 8–12 hodín bez jedla</li>
+                                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Piť iba čistú vodu (nie šťavy ani kávu)</li>
+                                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Lieky na štítnu žľazu nebrať ráno pred odberom</li>
+                                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Vyhnúť sa intenzívnej fyzickej aktivite deň pred odberom</li>
+                                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Alkohol nekonzumovať 48 hodín pred odberom</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" role="listitem">
+                            <button class="accordion-header" aria-expanded="false">
+                                <div class="accordion-icon">
+                                    <i class="fa-solid fa-file-prescription"></i>
+                                </div>
+                                <span>eRecept a opakovanie receptov</span>
+                                <i class="fa-solid fa-chevron-down accordion-arrow" aria-hidden="true"></i>
+                            </button>
+                            <div class="accordion-body" role="region">
+                                <div class="accordion-body-inner">
+                                    <p>Recepty na chronické lieky je možné vyžiadať telefonicky alebo emailom počas telefónnych hodín (9:00–11:00). Recept bude vystavený elektronicky a zaslaný do vami zvolenej lekárne.</p>
+                                    <p>Pre vystavenie receptu je potrebné, aby ste boli pacientom ambulancie s platným vyšetrením (nie starším ako 6 mesiacov pre chronické ochorenia).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" role="listitem">
+                            <button class="accordion-header" aria-expanded="false">
+                                <div class="accordion-icon">
+                                    <i class="fa-solid fa-user-check"></i>
+                                </div>
+                                <span>Noví pacienti</span>
+                                <i class="fa-solid fa-chevron-down accordion-arrow" aria-hidden="true"></i>
+                            </button>
+                            <div class="accordion-body" role="region">
+                                <div class="accordion-body-inner">
+                                    <div class="status-banner status-open">
+                                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                                        Ambulancia prijíma nových pacientov
+                                    </div>
+                                    <p>Pre objednanie nového pacienta je potrebný výmenný lístok od všeobecného lekára. Kontaktujte nás telefonicky počas telefónnych hodín alebo prostredníctvom kontaktného formulára.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" role="listitem">
+                            <button class="accordion-header" aria-expanded="false">
+                                <div class="accordion-icon">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+                                <span>GDPR a ochrana osobných údajov</span>
+                                <i class="fa-solid fa-chevron-down accordion-arrow" aria-hidden="true"></i>
+                            </button>
+                            <div class="accordion-body" role="region">
+                                <div class="accordion-body-inner">
+                                    <p>Vaše osobné a zdravotné údaje spracúvame v súlade so zákonom č. 18/2018 Z.z. o ochrane osobných údajov a nariadením GDPR. Údaje sa používajú výlučne na účely poskytovania zdravotnej starostlivosti a nie sú poskytované tretím stranám bez Vášho súhlasu.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <aside class="patient-sidebar reveal" style="--reveal-delay: 0.15s">
+                        <div class="hours-card">
+                            <div class="hours-card-header">
+                                <div class="hours-icon">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </div>
+                                <h3>Ordinačné hodiny</h3>
+                            </div>
+                            <table class="hours-table" aria-label="Ordinačné hodiny">
+                                <tbody>
+                                    <tr>
+                                        <td>Pondelok</td>
+                                        <td><strong>07:00 – 15:00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Utorok</td>
+                                        <td><strong>07:00 – 15:00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Streda</td>
+                                        <td><strong>07:00 – 15:00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Štvrtok</td>
+                                        <td><strong>07:00 – 15:00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Piatok</td>
+                                        <td><strong>07:00 – 15:00</strong></td>
+                                    </tr>
+                                    <tr class="hours-row-note">
+                                        <td>Sobota – Nedeľa</td>
+                                        <td><span class="closed-badge">Zatvorené</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="hours-note">
+                                <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                                Telefonické hodiny: <strong>9:00 – 11:00</strong><br>
+                                * Hodiny môžu podliehať zmenám.
+                            </p>
+                            <div class="hours-contacts">
+                                <a href="tel:041451421" class="hours-contact-item">
+                                    <div class="hc-icon"><i class="fa-solid fa-phone"></i></div>
+                                    <div class="hc-text">
+                                        <span class="hc-label">Telefón</span>
+                                        <span class="hc-value">041 451 0421</span>
+                                    </div>
+                                </a>
+                                <a href="mailto:samcova@medivasa.sk" class="hours-contact-item">
+                                    <div class="hc-icon"><i class="fa-solid fa-envelope"></i></div>
+                                    <div class="hc-text">
+                                        <span class="hc-label">Email</span>
+                                        <span class="hc-value">samcova@medivasa.sk</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             KONTAKT
+             ======================== -->
+        <section class="section section-dark" id="kontakt" aria-labelledby="contact-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-eyebrow section-eyebrow--light reveal">Kontakt</div>
+                    <h2 class="section-title section-title--light reveal" id="contact-heading" style="--reveal-delay: 0.1s">
+                        Nájdete nás <span class="gradient-text-light">tu</span>
+                    </h2>
+                </div>
+
+                <div class="contact-grid">
+
+                    <div class="contact-info reveal">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="contact-item-body">
+                                <strong>Adresa</strong>
+                                <span>Budova Medivi</span>
+                                <span>M. R. Štefánika 842/47</span>
+                                <span>010 01 Žilina</span>
+                                <span class="contact-note">2. poschodie</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="contact-item-body">
+                                <strong>Telefón</strong>
+                                <a href="tel:041451421">041 451 0421</a>
+                                <span class="contact-note">Telefonické hodiny: 9:00 – 11:00</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="contact-item-body">
+                                <strong>Email</strong>
+                                <a href="mailto:samcova@medivasa.sk">samcova@medivasa.sk</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fa-solid fa-bus"></i>
+                            </div>
+                            <div class="contact-item-body">
+                                <strong>Doprava</strong>
+                                <span>MHD: zastávka Nám. Ľ. Štúra</span>
+                                <span class="contact-note">Parkovanie dostupné pri budove</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrap reveal" style="--reveal-delay: 0.15s">
+                        <form class="contact-form" id="contactForm" novalidate>
+                            <h3>Napíšte nám</h3>
+                            <div class="form-group">
+                                <label for="name">Meno a priezvisko <span aria-hidden="true">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="Vaše meno" autocomplete="name" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email <span aria-hidden="true">*</span></label>
+                                    <input type="email" id="email" name="email" placeholder="vas@email.sk" autocomplete="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Telefón</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="+421 9XX XXX XXX" autocomplete="tel">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Správa <span aria-hidden="true">*</span></label>
+                                <textarea id="message" name="message" rows="4" placeholder="Vaša správa alebo otázka..." required></textarea>
+                            </div>
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="gdpr" name="gdpr" required>
+                                <label for="gdpr">Súhlasím so spracovaním osobných údajov v súlade s <a href="#" class="gdpr-link">GDPR</a></label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Odoslať správu
+                            </button>
+                            <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
+                                <i class="fa-solid fa-circle-check"></i>
+                                Správa bola odoslaná. Ozveme sa vám čoskoro!
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="contact-map reveal" style="--reveal-delay: 0.25s">
+                        <iframe
+                            src="https://maps.google.com/maps?q=M.+R.+%C5%A0tef%C3%A1nika+842%2F47%2C+010+01+%C5%BDilina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                            width="100%"
+                            height="100%"
+                            style="border:0; min-height:320px;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Mapa – Budova Medivi, Žilina">
+                        </iframe>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================
+         FOOTER
+         ======================== -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="brand-initials brand-initials--sm">ZS</div>
+                        <div class="brand-text">
+                            <span class="brand-name">MUDr. Zuzana Samcová</span>
+                            <span class="brand-title">Endokrinológia Žilina</span>
+                        </div>
+                    </div>
+                    <p class="footer-tagline">Hormonálne zdravie v dobrých rukách.</p>
+                    <div class="footer-insurance">
+                        <span class="insurance-badge-dark">VšZP</span>
+                        <span class="insurance-badge-dark">Dôvera</span>
+                        <span class="insurance-badge-dark">Union</span>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigácia</h4>
+                    <ul class="footer-links">
+                        <li><a href="#o-mne">O mne</a></li>
+                        <li><a href="#sluzby">Služby</a></li>
+                        <li><a href="#pacienti">Pre pacientov</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <ul class="footer-links footer-links--contact">
+                        <li>
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            M. R. Štefánika 842/47, Žilina
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                            <a href="tel:041451421">041 451 0421</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                            <a href="mailto:samcova@medivasa.sk">samcova@medivasa.sk</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Ordinačné hodiny</h4>
+                    <ul class="footer-links">
+                        <li>Pondelok – Piatok</li>
+                        <li><strong style="color:rgba(255,255,255,0.85)">07:00 – 15:00</strong></li>
+                        <li style="margin-top:8px; color: rgba(255,255,255,0.35); font-size:0.8rem">Telefonicky: 9:00 – 11:00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 MUDr. Zuzana Samcová. Všetky práva vyhradené.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Ochrana osobných údajov</a>
+                    <span aria-hidden="true">·</span>
+                    <a href="#">GDPR</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Späť na začiatok stránky">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
