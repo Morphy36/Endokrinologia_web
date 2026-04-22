@@ -231,387 +231,391 @@ if (cursorGlow) {
 }
 
 /* ============================================
-   Hero Canvas — Da Vinci anatomical endocrine glands
-   Large, clearly recognisable sepia ink drawings
+   Hero Canvas — Hormone chemical formulas + butterfly thyroids
+   Mouse-reactive water-ripple physics
    ============================================ */
 const heroCanvas = document.getElementById('heroParticles');
 
 if (heroCanvas) {
     const ctx  = heroCanvas.getContext('2d');
-    let glands = [];
+    let particles = [];
     let animFrame;
     let t = 0;
+    let mouseX = -9999, mouseY = -9999;
 
-    // Warm sepia — Da Vinci iron-gall ink on dark parchment
-    const ink = (a) => `rgba(222,190,134,${a})`;
+    // Aqua-teal ink — crisp against dark navy/violet gradient
+    const ink = (a) => `rgba(110, 225, 215, ${a})`;
     const set = (lw, a) => {
         ctx.strokeStyle = ink(a);
-        ctx.lineWidth   = lw;
+        ctx.lineWidth   = Math.max(0.5, lw);
         ctx.lineCap     = 'round';
         ctx.lineJoin    = 'round';
     };
 
-    /* ─────────────────────────────────────────────────────────────
-       THYROID (Štítna žľaza)
-       Two vertical oval lobes joined at the bottom by an isthmus.
-       Most recognisable endocrine gland — butterfly silhouette.
-    ───────────────────────────────────────────────────────────── */
-    function drawThyroid(ctx, s) {
-        const lw  = s / 28;       // outline weight
-        const ox  = s * 0.82;     // lobe centre x-offset
-        const rx  = s * 0.68;     // lobe horizontal radius
-        const ry  = s;            // lobe vertical radius (taller than wide)
-
-        ctx.shadowColor = ink(0.40); ctx.shadowBlur = s * 0.20;
-
-        // Left & right lobes
-        for (const cx of [-ox, ox]) {
-            ctx.beginPath();
-            ctx.ellipse(cx, 0, rx, ry, 0, 0, Math.PI * 2);
-            ctx.fillStyle = ink(0.08); ctx.fill();
-            set(lw, 0.92); ctx.stroke();
-        }
-
-        // Isthmus — short horizontal bridge at lobe lower-thirds
-        const iy = ry * 0.62;
+    /* ── flat-top hexagon path helper ── */
+    function hexPath(cx, cy, r) {
         ctx.beginPath();
-        ctx.moveTo(-rx * 0.55, iy - ry * 0.14);
-        ctx.quadraticCurveTo(0, iy - ry * 0.18, rx * 0.55, iy - ry * 0.14);
-        ctx.lineTo(rx * 0.55, iy + ry * 0.14);
-        ctx.quadraticCurveTo(0, iy + ry * 0.20, -rx * 0.55, iy + ry * 0.14);
+        for (let i = 0; i < 6; i++) {
+            const a = i * Math.PI / 3 + Math.PI / 6;
+            const x = cx + r * Math.cos(a);
+            const y = cy + r * Math.sin(a);
+            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
         ctx.closePath();
-        ctx.fillStyle = ink(0.10); ctx.fill();
-        set(lw * 0.80, 0.85); ctx.stroke();
+    }
+
+    /* ══════════════════════════════════════════════════
+       1. THYROID BUTTERFLY
+       Two symmetric curved lobes + isthmus bridge
+    ══════════════════════════════════════════════════ */
+    function drawButterfly(ctx, s) {
+        const lw = s / 22;
+        ctx.shadowColor = ink(0.60); ctx.shadowBlur = s * 0.40;
+
+        // Right lobe
+        ctx.beginPath();
+        ctx.moveTo(s * 0.06, -s * 0.08);
+        ctx.bezierCurveTo(s * 0.22, -s * 0.92, s * 1.12, -s * 1.02, s * 1.28, -s * 0.12);
+        ctx.bezierCurveTo(s * 1.18,  s * 0.78, s * 0.24,  s * 0.90, s * 0.06,  s * 0.12);
+        ctx.closePath();
+        ctx.fillStyle = ink(0.08); ctx.fill();
+        set(lw, 0.92); ctx.stroke();
+
+        // Left lobe (mirror)
+        ctx.beginPath();
+        ctx.moveTo(-s * 0.06, -s * 0.08);
+        ctx.bezierCurveTo(-s * 0.22, -s * 0.92, -s * 1.12, -s * 1.02, -s * 1.28, -s * 0.12);
+        ctx.bezierCurveTo(-s * 1.18,  s * 0.78, -s * 0.24,  s * 0.90, -s * 0.06,  s * 0.12);
+        ctx.closePath();
+        ctx.fillStyle = ink(0.08); ctx.fill();
+        set(lw, 0.92); ctx.stroke();
+
+        // Isthmus
+        ctx.beginPath();
+        ctx.ellipse(0, s * 0.38, s * 0.20, s * 0.26, 0, 0, Math.PI * 2);
+        ctx.fillStyle = ink(0.12); ctx.fill();
+        set(lw * 0.75, 0.80); ctx.stroke();
 
         ctx.shadowBlur = 0;
 
-        // Lobular texture — horizontal arcs in each lobe
-        set(s / 62, 0.30);
-        for (const cx of [-ox, ox]) {
-            for (let row = -2; row <= 2; row++) {
+        // Internal texture arcs
+        set(s / 55, 0.22);
+        for (const sign of [-1, 1]) {
+            for (let row = -1; row <= 1; row++) {
                 ctx.beginPath();
-                ctx.ellipse(cx, row * ry * 0.38, rx * 0.70, ry * 0.18, 0, 0, Math.PI);
+                ctx.ellipse(sign * s * 0.64, row * s * 0.28, s * 0.44, s * 0.14, 0, 0, Math.PI);
                 ctx.stroke();
             }
         }
-
-        // Superior thyroid vessels (two arteries entering each lobe from top)
-        set(s / 50, 0.55);
-        for (const cx of [-ox, ox]) {
-            ctx.beginPath();
-            ctx.moveTo(cx - rx * 0.26, -ry * 0.90);
-            ctx.lineTo(cx - rx * 0.32, -ry * 1.48);
-            ctx.moveTo(cx + rx * 0.20, -ry * 0.90);
-            ctx.lineTo(cx + rx * 0.26, -ry * 1.44);
-            ctx.stroke();
-        }
     }
 
-    /* ─────────────────────────────────────────────────────────────
-       PITUITARY (Hypofýza)
-       Small bean in sella turcica, with infundibulum stalk going up.
-    ───────────────────────────────────────────────────────────── */
-    function drawPituitary(ctx, s) {
-        const lw = s / 28;
-        ctx.shadowColor = ink(0.38); ctx.shadowBlur = s * 0.18;
+    /* ══════════════════════════════════════════════════
+       2. STEROID SKELETON  (A-B-C hexagons + D pentagon)
+       Backbone of cortisol / estradiol / testosterone
+    ══════════════════════════════════════════════════ */
+    function drawSteroid(ctx, s) {
+        const lw = s / 22;
+        const r  = s * 0.34;
+        const dh = r * Math.sqrt(3); // fused hex center-to-center
 
-        // Main gland — slightly kidney-bean shaped
-        ctx.beginPath();
-        ctx.ellipse(0, 0, s * 0.92, s * 0.76, 0, 0, Math.PI * 2);
-        ctx.fillStyle = ink(0.08); ctx.fill();
-        set(lw, 0.92); ctx.stroke();
+        ctx.shadowColor = ink(0.42); ctx.shadowBlur = s * 0.28;
 
-        ctx.shadowBlur = 0;
-
-        // Anterior / posterior lobe division
-        set(s / 60, 0.38);
-        ctx.beginPath();
-        ctx.moveTo(s * 0.06, -s * 0.74); ctx.lineTo(s * 0.06, s * 0.74); ctx.stroke();
-
-        // Infundibulum (pituitary stalk) — funnel shape rising upward
-        set(lw * 0.90, 0.88);
-        ctx.beginPath();
-        ctx.moveTo(-s * 0.20, -s * 0.74);
-        ctx.quadraticCurveTo(-s * 0.08, -s * 1.15, 0, -s * 1.65);
-        ctx.moveTo( s * 0.20, -s * 0.74);
-        ctx.quadraticCurveTo( s * 0.08, -s * 1.15, 0, -s * 1.65);
-        ctx.stroke();
-
-        // Median eminence (thickening where stalk meets brain)
-        ctx.beginPath();
-        ctx.ellipse(0, -s * 1.58, s * 0.18, s * 0.10, 0, 0, Math.PI * 2);
-        ctx.fillStyle = ink(0.12); ctx.fill();
-        set(lw * 0.70, 0.72); ctx.stroke();
-
-        // Sella turcica — bony cup beneath gland
-        set(lw * 1.10, 0.62);
-        ctx.beginPath();
-        ctx.arc(0, s * 0.10, s * 1.14, Math.PI * 0.07, Math.PI * 0.93); ctx.stroke();
-        // Clinoid processes (upward spurs at rim)
-        set(lw * 0.80, 0.50);
-        ctx.beginPath();
-        ctx.moveTo(-s * 1.10, s * 0.34); ctx.lineTo(-s * 1.22, -s * 0.14);
-        ctx.moveTo( s * 1.10, s * 0.34); ctx.lineTo( s * 1.22, -s * 0.14);
-        ctx.stroke();
-    }
-
-    /* ─────────────────────────────────────────────────────────────
-       ADRENAL (Nadobličky)
-       Triangular cap sitting atop kidney.  Cortex + medulla visible.
-    ───────────────────────────────────────────────────────────── */
-    function drawAdrenal(ctx, s) {
-        const lw = s / 28;
-        ctx.shadowColor = ink(0.38); ctx.shadowBlur = s * 0.18;
-
-        // Kidney (background shape, lower, dimmer)
-        ctx.beginPath();
-        ctx.ellipse(0, s * 1.05, s * 0.72, s * 0.88, 0, 0, Math.PI * 2);
-        ctx.fillStyle = ink(0.04); ctx.fill();
-        set(lw * 0.65, 0.38); ctx.stroke();
-
-        // Adrenal cap — inverted triangle/crescent
-        ctx.beginPath();
-        ctx.moveTo(-s * 0.85, s * 0.20);
-        ctx.bezierCurveTo(-s * 1.02, -s * 0.08, -s * 0.64, -s * 1.05, 0, -s * 1.08);
-        ctx.bezierCurveTo( s * 0.64, -s * 1.05,  s * 1.02, -s * 0.08, s * 0.85, s * 0.20);
-        ctx.bezierCurveTo( s * 0.55,  s * 0.42, -s * 0.55,  s * 0.42, -s * 0.85, s * 0.20);
-        ctx.fillStyle = ink(0.08); ctx.fill();
-        set(lw, 0.92); ctx.stroke();
-
-        ctx.shadowBlur = 0;
-
-        // Medulla boundary (inner layer)
-        set(s / 55, 0.36);
-        ctx.beginPath();
-        ctx.moveTo(-s * 0.46, s * 0.08);
-        ctx.bezierCurveTo(-s * 0.58, -s * 0.30, -s * 0.30, -s * 0.72, 0, -s * 0.74);
-        ctx.bezierCurveTo( s * 0.30, -s * 0.72,  s * 0.58, -s * 0.30, s * 0.46, s * 0.08);
-        ctx.bezierCurveTo( s * 0.28,  s * 0.25, -s * 0.28,  s * 0.25, -s * 0.46, s * 0.08);
-        ctx.stroke();
-
-        // Zona layers (horizontal hatching in cortex)
-        set(s / 68, 0.22);
-        for (let i = 0; i < 7; i++) {
-            const y  = -s * 0.94 + i * s * 0.19;
-            const hw = s * (0.18 + i * 0.10);
-            ctx.beginPath(); ctx.moveTo(-hw, y); ctx.lineTo(hw, y); ctx.stroke();
-        }
-    }
-
-    /* ─────────────────────────────────────────────────────────────
-       PANCREAS (Pankreas)
-       Elongated: head (right, bulky) → body → tail (left, tapers up).
-       Wirsung duct as central axis.
-    ───────────────────────────────────────────────────────────── */
-    function drawPancreas(ctx, s) {
-        const lw = s / 28;
-        ctx.shadowColor = ink(0.35); ctx.shadowBlur = s * 0.17;
-
-        // Organ outline — very characteristic elongated curved shape
-        ctx.beginPath();
-        ctx.moveTo( s * 1.30,  s * 0.55);
-        ctx.bezierCurveTo( s * 1.52,  s * 0.52,  s * 1.55, -s * 0.18,  s * 1.38, -s * 0.60);
-        ctx.bezierCurveTo( s * 1.16, -s * 0.92,  s * 0.70, -s * 0.88,  s * 0.48, -s * 0.58);
-        ctx.bezierCurveTo( s * 0.08, -s * 0.75, -s * 0.32, -s * 0.80, -s * 0.68, -s * 0.92);
-        ctx.bezierCurveTo(-s * 0.96, -s * 1.00, -s * 1.38, -s * 1.02, -s * 1.52, -s * 0.72);
-        ctx.bezierCurveTo(-s * 1.62, -s * 0.46, -s * 1.46, -s * 0.10, -s * 1.24,  s * 0.08);
-        ctx.bezierCurveTo(-s * 0.94,  s * 0.32, -s * 0.32,  s * 0.58,  s * 0.28,  s * 0.60);
-        ctx.bezierCurveTo( s * 0.72,  s * 0.62,  s * 1.08,  s * 0.60,  s * 1.30,  s * 0.55);
-        ctx.fillStyle = ink(0.07); ctx.fill();
-        set(lw, 0.92); ctx.stroke();
-
-        ctx.shadowBlur = 0;
-
-        // Wirsung duct (main duct — runs whole length as central axis)
-        set(s / 42, 0.55);
-        ctx.beginPath();
-        ctx.moveTo( s * 1.32,  s * 0.14);
-        ctx.bezierCurveTo( s * 0.62, -s * 0.06, -s * 0.42, -s * 0.22, -s * 1.28, -s * 0.30);
-        ctx.stroke();
-
-        // Accessory duct (Santorini) — short branch near head
-        set(s / 58, 0.32);
-        ctx.beginPath();
-        ctx.moveTo( s * 1.10, -s * 0.12);
-        ctx.quadraticCurveTo( s * 1.22, -s * 0.44,  s * 1.05, -s * 0.52);
-        ctx.stroke();
-
-        // Lobular septa
-        set(s / 68, 0.22);
-        for (let i = 0; i < 6; i++) {
-            const x = -s * 1.08 + i * s * 0.46;
-            ctx.beginPath();
-            ctx.moveTo(x, -s * 0.50);
-            ctx.quadraticCurveTo(x + s * 0.10, 0, x, s * 0.46);
-            ctx.stroke();
+        // Rings A, B, C
+        for (let i = 0; i < 3; i++) {
+            hexPath(-dh + i * dh, 0, r);
+            ctx.fillStyle = ink(0.05); ctx.fill();
+            set(lw, 0.82); ctx.stroke();
         }
 
-        // Uncinate process (small hook at bottom of head)
-        set(lw * 0.80, 0.50);
+        ctx.shadowBlur = 0;
+
+        // Ring D — pentagon fused to right of ring C
+        const Dx = dh + r * Math.sqrt(3) * 0.5 + r * 0.44;
+        const rD = r * 0.76;
         ctx.beginPath();
-        ctx.moveTo( s * 1.02,  s * 0.55);
-        ctx.bezierCurveTo( s * 0.78,  s * 0.88,  s * 0.36,  s * 0.85,  s * 0.30,  s * 0.60);
-        ctx.stroke();
+        for (let i = 0; i < 5; i++) {
+            const a = i * (Math.PI * 2 / 5) - Math.PI / 2;
+            const x = Dx + rD * Math.cos(a);
+            const y = rD * Math.sin(a) - r * 0.04;
+            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fillStyle = ink(0.05); ctx.fill();
+        set(lw, 0.82); ctx.stroke();
+
+        // Functional groups: =O on ring A, -OH on ring D
+        set(lw * 0.68, 0.55);
+        ctx.beginPath();
+        ctx.moveTo(-dh, -r); ctx.lineTo(-dh, -r - s * 0.40); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(Dx + rD * 0.78, -rD * 0.72);
+        ctx.lineTo(Dx + rD * 1.20, -rD * 1.10); ctx.stroke();
+
+        ctx.font      = `bold ${Math.round(s * 0.21)}px monospace`;
+        ctx.fillStyle = ink(0.78);
+        ctx.textAlign = 'center';
+        ctx.fillText('O',  -dh, -r - s * 0.52);
+        ctx.fillText('OH', Dx + rD * 1.22, -rD * 1.24);
     }
 
-    /* ─────────────────────────────────────────────────────────────
-       OVARY (Pohlavné žľazy)
-       Oval with Graafian follicles on surface — unmistakeable.
-    ───────────────────────────────────────────────────────────── */
-    function drawGonad(ctx, s) {
-        const lw = s / 28;
-        ctx.shadowColor = ink(0.38); ctx.shadowBlur = s * 0.18;
+    /* ══════════════════════════════════════════════════
+       3. THYROXINE T4
+       Two phenyl rings, -O- bridge, 4 iodine atoms
+    ══════════════════════════════════════════════════ */
+    function drawThyroxine(ctx, s) {
+        const lw = s / 22;
+        const r  = s * 0.35;
+        const gc = r * 2.78; // gap between ring centres
 
-        // Tunica albuginea (outer capsule)
-        ctx.beginPath();
-        ctx.ellipse(0, 0, s * 0.92, s * 0.70, Math.PI * 0.06, 0, Math.PI * 2);
-        ctx.fillStyle = ink(0.08); ctx.fill();
-        set(lw, 0.92); ctx.stroke();
+        ctx.shadowColor = ink(0.44); ctx.shadowBlur = s * 0.28;
+
+        hexPath(-gc * 0.5, 0, r);
+        ctx.fillStyle = ink(0.05); ctx.fill();
+        set(lw, 0.82); ctx.stroke();
+
+        hexPath(gc * 0.5, 0, r);
+        ctx.fillStyle = ink(0.05); ctx.fill();
+        set(lw, 0.82); ctx.stroke();
 
         ctx.shadowBlur = 0;
 
-        // Graafian follicles — the unique identifier of an ovary
-        const fol = [
-            [-0.48, -0.30, 0.22], [ 0.28, -0.42, 0.20], [ 0.58, -0.08, 0.16],
-            [ 0.26,  0.38, 0.22], [-0.36,  0.34, 0.18], [-0.60,  0.08, 0.15],
-            [ 0.04, -0.04, 0.12]
+        // -O- ether bridge
+        set(lw, 0.68);
+        ctx.beginPath();
+        ctx.moveTo(-gc * 0.5 + r * 0.86, 0);
+        ctx.lineTo( gc * 0.5 - r * 0.86, 0);
+        ctx.stroke();
+        ctx.font      = `bold ${Math.round(s * 0.28)}px monospace`;
+        ctx.fillStyle = ink(0.82);
+        ctx.textAlign = 'center';
+        ctx.fillText('O', 0, -s * 0.05);
+
+        // 4 iodine atoms: 2 per ring at ortho/meta positions
+        const iodines = [
+            { lx: -gc * 0.5 - r * 0.85, ly: -r * 1.14, fx: -gc * 0.5 - r * 0.46, fy: -r * 0.46 },
+            { lx: -gc * 0.5 - r * 0.85, ly:  r * 1.14, fx: -gc * 0.5 - r * 0.46, fy:  r * 0.46 },
+            { lx:  gc * 0.5 + r * 0.85, ly: -r * 1.14, fx:  gc * 0.5 + r * 0.46, fy: -r * 0.46 },
+            { lx:  gc * 0.5 + r * 0.85, ly:  r * 1.14, fx:  gc * 0.5 + r * 0.46, fy:  r * 0.46 }
         ];
-        fol.forEach(([fx, fy, fr]) => {
-            // Follicle circle
-            ctx.beginPath();
-            ctx.arc(fx * s, fy * s, fr * s, 0, Math.PI * 2);
-            set(s / 44, 0.72); ctx.stroke();
-            // Oocyte nucleus dot
-            if (fr > 0.16) {
-                ctx.beginPath();
-                ctx.arc(fx * s - fr * s * 0.25, fy * s - fr * s * 0.25, fr * s * 0.28, 0, Math.PI * 2);
-                set(s / 66, 0.42); ctx.stroke();
-            }
+        ctx.font      = `bold ${Math.round(s * 0.31)}px monospace`;
+        ctx.fillStyle = ink(0.92);
+        ctx.textAlign = 'center';
+        iodines.forEach(({ lx, ly, fx, fy }) => {
+            set(lw * 0.62, 0.50);
+            ctx.beginPath(); ctx.moveTo(fx, fy); ctx.lineTo(lx, ly); ctx.stroke();
+            ctx.fillText('I', lx, ly + s * 0.11);
         });
 
-        // Mesovarium ligament (cord exiting from one end)
-        set(lw * 0.90, 0.52);
+        // Side chain: -CH₂-CH(NH₂)-COOH
+        set(lw * 0.72, 0.52);
+        const sx = gc * 0.5 + r * 0.86;
         ctx.beginPath();
-        ctx.moveTo( s * 0.90,  s * 0.05);
-        ctx.bezierCurveTo( s * 1.18, -s * 0.20,  s * 1.35, -s * 0.08,  s * 1.42,  s * 0.12);
+        ctx.moveTo(sx, 0);
+        ctx.lineTo(sx + s * 0.44, 0);
+        ctx.lineTo(sx + s * 0.80, -s * 0.36);
+        ctx.lineTo(sx + s * 1.18, -s * 0.36);
         ctx.stroke();
-
-        // Fimbriae at opposite end
-        set(s / 52, 0.40);
-        for (let i = -2; i <= 2; i++) {
-            ctx.beginPath();
-            ctx.moveTo(-s * 0.90, i * s * 0.14);
-            ctx.lineTo(-s * 1.18, i * s * 0.20 - s * 0.04);
-            ctx.stroke();
-        }
+        ctx.font      = `${Math.round(s * 0.19)}px monospace`;
+        ctx.fillStyle = ink(0.55);
+        ctx.textAlign = 'left';
+        ctx.fillText('NH₂',  sx + s * 0.70, -s * 0.54);
+        ctx.fillText('COOH', sx + s * 1.18, -s * 0.20);
     }
 
-    /* ─────────────────────────────────────────────────────────────
-       PARATHYROID (Prištítne telieska)
-       Four tiny ovals in 2×2 arrangement on thyroid posterior.
-    ───────────────────────────────────────────────────────────── */
-    function drawParathyroid(ctx, s) {
-        const lw = s / 28;
-        ctx.shadowColor = ink(0.35); ctx.shadowBlur = s * 0.16;
+    /* ══════════════════════════════════════════════════
+       4. CATECHOLAMINE — Adrenaline / Epinephrine
+       Benzene with catechol -OH groups + aminoethanol chain
+    ══════════════════════════════════════════════════ */
+    function drawCatecholamine(ctx, s) {
+        const lw = s / 22;
+        const r  = s * 0.50;
 
-        const pos = [[-0.40, -0.48], [0.40, -0.48], [-0.40, 0.48], [0.40, 0.48]];
-        pos.forEach(([px, py]) => {
-            // Gland body
-            ctx.beginPath();
-            ctx.ellipse(px * s, py * s, s * 0.34, s * 0.25, Math.PI * 0.08, 0, Math.PI * 2);
-            ctx.fillStyle = ink(0.10); ctx.fill();
-            set(lw, 0.90); ctx.stroke();
-            // Inner parenchyma boundary
-            ctx.beginPath();
-            ctx.ellipse(px * s, py * s, s * 0.22, s * 0.16, Math.PI * 0.08, 0, Math.PI * 2);
-            set(s / 60, 0.36); ctx.stroke();
-        });
+        ctx.shadowColor = ink(0.40); ctx.shadowBlur = s * 0.26;
+
+        // Benzene ring
+        hexPath(0, 0, r);
+        ctx.fillStyle = ink(0.06); ctx.fill();
+        set(lw, 0.86); ctx.stroke();
+
+        // Aromatic inner circle
+        ctx.beginPath();
+        ctx.arc(0, 0, r * 0.52, 0, Math.PI * 2);
+        set(lw * 0.50, 0.28); ctx.stroke();
 
         ctx.shadowBlur = 0;
 
-        // Connective tissue strands
-        set(s / 65, 0.26);
+        // Catechol -OH groups at 3,4 positions
+        ctx.font      = `bold ${Math.round(s * 0.24)}px monospace`;
+        ctx.fillStyle = ink(0.80);
+        ctx.textAlign = 'center';
+        [210, 270].forEach(deg => {
+            const rad = deg * Math.PI / 180;
+            const vx  = r * Math.cos(rad), vy = r * Math.sin(rad);
+            set(lw * 0.72, 0.60);
+            ctx.beginPath();
+            ctx.moveTo(vx, vy); ctx.lineTo(vx * 1.56, vy * 1.56); ctx.stroke();
+            ctx.fillText('OH', vx * 1.76, vy * 1.76 + s * 0.05);
+        });
+
+        // Side chain at 30° vertex: -CH(OH)-CH₂-NH-CH₃
+        const vx0 = r * Math.cos(30 * Math.PI / 180);
+        const vy0 = r * Math.sin(30 * Math.PI / 180);
+        set(lw * 0.80, 0.62);
         ctx.beginPath();
-        ctx.moveTo(-s * 0.40, -s * 0.30); ctx.lineTo(-s * 0.40,  s * 0.30);
-        ctx.moveTo( s * 0.40, -s * 0.30); ctx.lineTo( s * 0.40,  s * 0.30);
-        ctx.moveTo(-s * 0.28, -s * 0.48); ctx.lineTo( s * 0.28, -s * 0.48);
-        ctx.moveTo(-s * 0.28,  s * 0.48); ctx.lineTo( s * 0.28,  s * 0.48);
+        ctx.moveTo(vx0, vy0);
+        ctx.lineTo(vx0 + s * 0.42, vy0 - s * 0.42);
+        ctx.lineTo(vx0 + s * 0.80, vy0 - s * 0.28);
+        ctx.lineTo(vx0 + s * 1.15, vy0 - s * 0.52);
         ctx.stroke();
+        ctx.font      = `${Math.round(s * 0.21)}px monospace`;
+        ctx.fillStyle = ink(0.58);
+        ctx.textAlign = 'center';
+        ctx.fillText('OH',  vx0 + s * 0.42, vy0 - s * 0.60);
+        ctx.fillText('NH',  vx0 + s * 0.88, vy0 - s * 0.55);
+        ctx.fillText('CH₃', vx0 + s * 1.18, vy0 - s * 0.63);
     }
 
-    /* ── Animation engine ──────────────────────────────────────── */
+    /* ══════════════════════════════════════════════════
+       5. INSULIN HEXAMER  (6-fold symmetry, Zn²⁺ centre)
+    ══════════════════════════════════════════════════ */
+    function drawInsulin(ctx, s) {
+        const lw = s / 24;
 
+        ctx.shadowColor = ink(0.38); ctx.shadowBlur = s * 0.24;
+
+        // Central zinc ion
+        ctx.beginPath();
+        ctx.arc(0, 0, s * 0.14, 0, Math.PI * 2);
+        ctx.fillStyle = ink(0.16); ctx.fill();
+        set(lw * 0.80, 0.74); ctx.stroke();
+
+        // 6 subunit ellipses in hexagonal arrangement
+        for (let i = 0; i < 6; i++) {
+            const a  = i * Math.PI / 3;
+            const cx = Math.cos(a) * s * 0.72;
+            const cy = Math.sin(a) * s * 0.72;
+            ctx.beginPath();
+            ctx.ellipse(cx, cy, s * 0.30, s * 0.22, a, 0, Math.PI * 2);
+            ctx.fillStyle = ink(0.05); ctx.fill();
+            set(lw, 0.80); ctx.stroke();
+            // Coordination bond to Zn centre
+            set(lw * 0.44, 0.28);
+            ctx.beginPath();
+            ctx.moveTo(cx * 0.35, cy * 0.35); ctx.lineTo(cx * 0.66, cy * 0.66); ctx.stroke();
+        }
+
+        ctx.shadowBlur = 0;
+
+        ctx.font      = `bold ${Math.round(s * 0.22)}px monospace`;
+        ctx.fillStyle = ink(0.74);
+        ctx.textAlign = 'center';
+        ctx.fillText('Zn²⁺', 0, s * 0.07);
+    }
+
+    /* ══════════════════════════════════════════════════
+       Animation engine — water-ripple mouse physics
+    ══════════════════════════════════════════════════ */
     const DRAW_FNS = {
-        thyroid: drawThyroid, pituitary: drawPituitary, adrenal: drawAdrenal,
-        pancreas: drawPancreas, gonad: drawGonad, parathyroid: drawParathyroid
+        butterfly:     drawButterfly,
+        steroid:       drawSteroid,
+        thyroxine:     drawThyroxine,
+        catecholamine: drawCatecholamine,
+        insulin:       drawInsulin
     };
-    const TYPES = Object.keys(DRAW_FNS);
 
     function resizeHero() {
         heroCanvas.width  = heroCanvas.offsetWidth;
         heroCanvas.height = heroCanvas.offsetHeight;
     }
 
-    function createGlands() {
-        glands = [];
-        // One of each type + one extra thyroid and one extra adrenal = 8 total
-        [...TYPES, 'thyroid', 'adrenal'].forEach((type, i, arr) => {
-            const col = (i + 0.5) / arr.length;
-            glands.push({
+    function createParticles() {
+        particles = [];
+        // 3 butterfly thyroids (most iconic), 2 steroids, 2 T4 formulas, 1 adrenaline, 1 insulin
+        const types = [
+            'butterfly', 'butterfly', 'butterfly',
+            'steroid',   'steroid',
+            'thyroxine', 'thyroxine',
+            'catecholamine', 'insulin'
+        ];
+        types.forEach((type, i) => {
+            const hx = ((i + 0.5) / types.length + (Math.random() - 0.5) * 0.14) * heroCanvas.width;
+            const hy = (0.10 + Math.random() * 0.80) * heroCanvas.height;
+            particles.push({
                 type,
-                x:       (col + (Math.random() - 0.5) * 0.18) * heroCanvas.width,
-                y:       (0.15 + Math.random() * 0.70) * heroCanvas.height,
-                size:    Math.random() * 28 + 52,    // 52–80 px — large & clearly visible
+                homeX: hx, homeY: hy,
+                x:     hx, y:     hy,
+                vx: 0,  vy: 0,
+                size:    Math.random() * 14 + 38,        // 38–52 px
                 angle:   Math.random() * Math.PI * 2,
-                vAngle:  (Math.random() - 0.5) * 0.0028,
-                vx:      (Math.random() - 0.5) * 0.14,
-                vy:      (Math.random() - 0.5) * 0.10,
-                opacity: Math.random() * 0.12 + 0.30, // 0.30–0.42 — clearly visible
+                vAngle:  (Math.random() - 0.5) * 0.0016,
+                opacity: Math.random() * 0.10 + 0.28,   // 0.28–0.38
                 phase:   Math.random() * Math.PI * 2
             });
         });
     }
 
-    function animateVinci() {
+    function animateHero() {
         ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
         t += 0.005;
 
-        glands.forEach(g => {
-            const fx = Math.sin(t * 0.30 + g.phase) * 11;
-            const fy = Math.cos(t * 0.24 + g.phase) * 13;
-            const op = g.opacity * (0.76 + 0.24 * Math.sin(t * 0.42 + g.phase));
+        particles.forEach(p => {
+            // Spring back towards home position (slow drift)
+            p.vx += (p.homeX - p.x) * 0.010;
+            p.vy += (p.homeY - p.y) * 0.010;
+
+            // Mouse repulsion — water displacement effect
+            const mdx   = p.x - mouseX;
+            const mdy   = p.y - mouseY;
+            const dist2 = mdx * mdx + mdy * mdy;
+            const R     = 165;
+            if (dist2 < R * R && dist2 > 0.1) {
+                const dist  = Math.sqrt(dist2);
+                const force = (1 - dist / R) * 3.2;
+                p.vx += (mdx / dist) * force;
+                p.vy += (mdy / dist) * force;
+            }
+
+            // Viscous damping (water feel)
+            p.vx *= 0.88;
+            p.vy *= 0.88;
+
+            // Integrate position + ambient sine-wave drift
+            p.x     += p.vx + Math.sin(t * 0.28 + p.phase) * 0.30;
+            p.y     += p.vy + Math.cos(t * 0.22 + p.phase) * 0.24;
+            p.angle += p.vAngle;
+
+            const op = p.opacity * (0.80 + 0.20 * Math.sin(t * 0.40 + p.phase));
 
             ctx.save();
-            ctx.translate(g.x + fx, g.y + fy);
-            ctx.rotate(g.angle);
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.angle);
             ctx.globalAlpha = op;
-
-            DRAW_FNS[g.type](ctx, g.size);
-
+            DRAW_FNS[p.type](ctx, p.size);
             ctx.restore();
-
-            g.angle += g.vAngle;
-            g.x     += g.vx;
-            g.y     += g.vy;
-            const pad = g.size * 3;
-            if (g.x < -pad) g.x = heroCanvas.width  + pad;
-            if (g.x > heroCanvas.width  + pad) g.x = -pad;
-            if (g.y < -pad) g.y = heroCanvas.height + pad;
-            if (g.y > heroCanvas.height + pad) g.y = -pad;
         });
 
-        animFrame = requestAnimationFrame(animateVinci);
+        animFrame = requestAnimationFrame(animateHero);
     }
 
+    // Mouse tracking on the canvas element
+    heroCanvas.addEventListener('mousemove', e => {
+        const rect = heroCanvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+    });
+    heroCanvas.addEventListener('mouseleave', () => {
+        mouseX = -9999; mouseY = -9999;
+    });
+
     resizeHero();
-    createGlands();
-    animateVinci();
+    createParticles();
+    animateHero();
 
     window.addEventListener('resize', () => {
         cancelAnimationFrame(animFrame);
         resizeHero();
-        createGlands();
-        animateVinci();
+        createParticles();
+        animateHero();
     });
 }
 
