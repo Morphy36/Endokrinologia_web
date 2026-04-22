@@ -231,8 +231,8 @@ if (cursorGlow) {
 }
 
 /* ============================================
-   Hero Canvas — Hormone chemical formulas + butterfly thyroids
-   Mouse-reactive water-ripple physics
+   Hero Canvas — Hormone chemical formulas + real butterflies
+   Mouse flee physics: elements run away from cursor
    ============================================ */
 const heroCanvas = document.getElementById('heroParticles');
 
@@ -265,48 +265,94 @@ if (heroCanvas) {
     }
 
     /* ══════════════════════════════════════════════════
-       1. THYROID BUTTERFLY
-       Two symmetric curved lobes + isthmus bridge
+       1. REAL BUTTERFLY  (motýľ)
+       Forewings + hindwings + body + antennae
     ══════════════════════════════════════════════════ */
     function drawButterfly(ctx, s) {
-        const lw = s / 22;
-        ctx.shadowColor = ink(0.60); ctx.shadowBlur = s * 0.40;
+        const lw = s / 20;
+        ctx.shadowColor = ink(0.65); ctx.shadowBlur = s * 0.45;
 
-        // Right lobe
+        // Upper-right forewing
         ctx.beginPath();
-        ctx.moveTo(s * 0.06, -s * 0.08);
-        ctx.bezierCurveTo(s * 0.22, -s * 0.92, s * 1.12, -s * 1.02, s * 1.28, -s * 0.12);
-        ctx.bezierCurveTo(s * 1.18,  s * 0.78, s * 0.24,  s * 0.90, s * 0.06,  s * 0.12);
+        ctx.moveTo(s * 0.06, -s * 0.04);
+        ctx.bezierCurveTo(s * 0.30, -s * 1.10, s * 1.30, -s * 1.20, s * 1.40, -s * 0.40);
+        ctx.bezierCurveTo(s * 1.35,  s * 0.10, s * 0.55,  s * 0.22, s * 0.06,  s * 0.10);
         ctx.closePath();
-        ctx.fillStyle = ink(0.08); ctx.fill();
-        set(lw, 0.92); ctx.stroke();
+        ctx.fillStyle = ink(0.10); ctx.fill();
+        set(lw, 0.95); ctx.stroke();
 
-        // Left lobe (mirror)
+        // Upper-left forewing (mirror)
         ctx.beginPath();
-        ctx.moveTo(-s * 0.06, -s * 0.08);
-        ctx.bezierCurveTo(-s * 0.22, -s * 0.92, -s * 1.12, -s * 1.02, -s * 1.28, -s * 0.12);
-        ctx.bezierCurveTo(-s * 1.18,  s * 0.78, -s * 0.24,  s * 0.90, -s * 0.06,  s * 0.12);
+        ctx.moveTo(-s * 0.06, -s * 0.04);
+        ctx.bezierCurveTo(-s * 0.30, -s * 1.10, -s * 1.30, -s * 1.20, -s * 1.40, -s * 0.40);
+        ctx.bezierCurveTo(-s * 1.35,  s * 0.10, -s * 0.55,  s * 0.22, -s * 0.06,  s * 0.10);
         ctx.closePath();
-        ctx.fillStyle = ink(0.08); ctx.fill();
-        set(lw, 0.92); ctx.stroke();
+        ctx.fillStyle = ink(0.10); ctx.fill();
+        set(lw, 0.95); ctx.stroke();
 
-        // Isthmus
+        // Lower-right hindwing
         ctx.beginPath();
-        ctx.ellipse(0, s * 0.38, s * 0.20, s * 0.26, 0, 0, Math.PI * 2);
-        ctx.fillStyle = ink(0.12); ctx.fill();
-        set(lw * 0.75, 0.80); ctx.stroke();
+        ctx.moveTo(s * 0.06,  s * 0.12);
+        ctx.bezierCurveTo(s * 0.40,  s * 0.22, s * 1.25,  s * 0.15, s * 1.30,  s * 0.70);
+        ctx.bezierCurveTo(s * 1.18,  s * 1.10, s * 0.35,  s * 1.10, s * 0.06,  s * 0.55);
+        ctx.closePath();
+        ctx.fillStyle = ink(0.10); ctx.fill();
+        set(lw, 0.95); ctx.stroke();
+
+        // Lower-left hindwing (mirror)
+        ctx.beginPath();
+        ctx.moveTo(-s * 0.06,  s * 0.12);
+        ctx.bezierCurveTo(-s * 0.40,  s * 0.22, -s * 1.25,  s * 0.15, -s * 1.30,  s * 0.70);
+        ctx.bezierCurveTo(-s * 1.18,  s * 1.10, -s * 0.35,  s * 1.10, -s * 0.06,  s * 0.55);
+        ctx.closePath();
+        ctx.fillStyle = ink(0.10); ctx.fill();
+        set(lw, 0.95); ctx.stroke();
 
         ctx.shadowBlur = 0;
 
-        // Internal texture arcs
-        set(s / 55, 0.22);
-        for (const sign of [-1, 1]) {
-            for (let row = -1; row <= 1; row++) {
-                ctx.beginPath();
-                ctx.ellipse(sign * s * 0.64, row * s * 0.28, s * 0.44, s * 0.14, 0, 0, Math.PI);
-                ctx.stroke();
-            }
-        }
+        // Body (abdomen + thorax)
+        ctx.beginPath();
+        ctx.ellipse(0, s * 0.24, s * 0.11, s * 0.44, 0, 0, Math.PI * 2);
+        ctx.fillStyle = ink(0.22); ctx.fill();
+        set(lw * 0.70, 0.85); ctx.stroke();
+
+        // Head
+        ctx.beginPath();
+        ctx.arc(0, -s * 0.12, s * 0.12, 0, Math.PI * 2);
+        ctx.fillStyle = ink(0.20); ctx.fill();
+        set(lw * 0.70, 0.85); ctx.stroke();
+
+        // Antennae
+        set(s / 50, 0.65);
+        ctx.beginPath();
+        ctx.moveTo(-s * 0.06, -s * 0.22);
+        ctx.quadraticCurveTo(-s * 0.30, -s * 0.85, -s * 0.20, -s * 1.10);
+        ctx.moveTo( s * 0.06, -s * 0.22);
+        ctx.quadraticCurveTo( s * 0.30, -s * 0.85,  s * 0.20, -s * 1.10);
+        ctx.stroke();
+        // Antenna balls
+        ctx.beginPath();
+        ctx.arc(-s * 0.20, -s * 1.10, s * 0.06, 0, Math.PI * 2);
+        ctx.arc( s * 0.20, -s * 1.10, s * 0.06, 0, Math.PI * 2);
+        ctx.fillStyle = ink(0.70); ctx.fill();
+
+        // Wing vein details
+        set(s / 58, 0.25);
+        // Right forewing veins
+        ctx.beginPath();
+        ctx.moveTo(s * 0.06, s * 0.04);
+        ctx.quadraticCurveTo(s * 0.50, -s * 0.50, s * 1.20, -s * 0.55);
+        ctx.moveTo(s * 0.06, s * 0.04);
+        ctx.quadraticCurveTo(s * 0.60, -s * 0.10, s * 1.30, -s * 0.10);
+        ctx.stroke();
+        set(s / 58, 0.25);
+        // Left forewing veins (mirror)
+        ctx.beginPath();
+        ctx.moveTo(-s * 0.06, s * 0.04);
+        ctx.quadraticCurveTo(-s * 0.50, -s * 0.50, -s * 1.20, -s * 0.55);
+        ctx.moveTo(-s * 0.06, s * 0.04);
+        ctx.quadraticCurveTo(-s * 0.60, -s * 0.10, -s * 1.30, -s * 0.10);
+        ctx.stroke();
     }
 
     /* ══════════════════════════════════════════════════
@@ -513,7 +559,7 @@ if (heroCanvas) {
     }
 
     /* ══════════════════════════════════════════════════
-       Animation engine — water-ripple mouse physics
+       Animation engine — flee-from-mouse physics
     ══════════════════════════════════════════════════ */
     const DRAW_FNS = {
         butterfly:     drawButterfly,
@@ -530,25 +576,31 @@ if (heroCanvas) {
 
     function createParticles() {
         particles = [];
-        // 3 butterfly thyroids (most iconic), 2 steroids, 2 T4 formulas, 1 adrenaline, 1 insulin
+        // More particles, bigger: 5 butterflies + 4 steroids + 4 thyroxines + 3 catecholamines + 3 insulins = 19
         const types = [
-            'butterfly', 'butterfly', 'butterfly',
-            'steroid',   'steroid',
-            'thyroxine', 'thyroxine',
-            'catecholamine', 'insulin'
+            'butterfly', 'butterfly', 'butterfly', 'butterfly', 'butterfly',
+            'steroid',   'steroid',   'steroid',   'steroid',
+            'thyroxine', 'thyroxine', 'thyroxine', 'thyroxine',
+            'catecholamine', 'catecholamine', 'catecholamine',
+            'insulin', 'insulin', 'insulin'
         ];
         types.forEach((type, i) => {
-            const hx = ((i + 0.5) / types.length + (Math.random() - 0.5) * 0.14) * heroCanvas.width;
-            const hy = (0.10 + Math.random() * 0.80) * heroCanvas.height;
+            // Spread evenly + random jitter across canvas
+            const cols = 5;
+            const col  = i % cols;
+            const row  = Math.floor(i / cols);
+            const rows = Math.ceil(types.length / cols);
+            const hx   = ((col + 0.5) / cols  + (Math.random() - 0.5) * 0.18) * heroCanvas.width;
+            const hy   = ((row + 0.5) / rows  + (Math.random() - 0.5) * 0.18) * heroCanvas.height;
             particles.push({
                 type,
                 homeX: hx, homeY: hy,
                 x:     hx, y:     hy,
                 vx: 0,  vy: 0,
-                size:    Math.random() * 14 + 38,        // 38–52 px
+                size:    Math.random() * 18 + 50,        // 50–68 px — big & clear
                 angle:   Math.random() * Math.PI * 2,
-                vAngle:  (Math.random() - 0.5) * 0.0016,
-                opacity: Math.random() * 0.10 + 0.28,   // 0.28–0.38
+                vAngle:  (Math.random() - 0.5) * 0.0014,
+                opacity: Math.random() * 0.10 + 0.30,   // 0.30–0.40
                 phase:   Math.random() * Math.PI * 2
             });
         });
@@ -559,36 +611,47 @@ if (heroCanvas) {
         t += 0.005;
 
         particles.forEach(p => {
-            // Spring back towards home position (slow drift)
-            p.vx += (p.homeX - p.x) * 0.010;
-            p.vy += (p.homeY - p.y) * 0.010;
+            // Spring back towards home position
+            const kSpring = 0.008;
+            p.vx += (p.homeX - p.x) * kSpring;
+            p.vy += (p.homeY - p.y) * kSpring;
 
-            // Mouse repulsion — water displacement effect
+            // Mouse FLEE — strong repulsion, particles run away
             const mdx   = p.x - mouseX;
             const mdy   = p.y - mouseY;
             const dist2 = mdx * mdx + mdy * mdy;
-            const R     = 165;
+            const R     = 220;   // large influence radius
             if (dist2 < R * R && dist2 > 0.1) {
                 const dist  = Math.sqrt(dist2);
-                const force = (1 - dist / R) * 3.2;
+                // Inverse-square-like force: much stronger when close
+                const force = Math.pow(1 - dist / R, 1.6) * 8.0;
                 p.vx += (mdx / dist) * force;
                 p.vy += (mdy / dist) * force;
+                // Spin faster when fleeing
+                p.vAngle += (Math.random() - 0.5) * 0.008;
             }
 
-            // Viscous damping (water feel)
-            p.vx *= 0.88;
-            p.vy *= 0.88;
+            // Damping
+            p.vx     *= 0.90;
+            p.vy     *= 0.90;
+            p.vAngle *= 0.92;
 
-            // Integrate position + ambient sine-wave drift
-            p.x     += p.vx + Math.sin(t * 0.28 + p.phase) * 0.30;
-            p.y     += p.vy + Math.cos(t * 0.22 + p.phase) * 0.24;
+            // Integrate + gentle ambient drift
+            p.x     += p.vx + Math.sin(t * 0.26 + p.phase) * 0.28;
+            p.y     += p.vy + Math.cos(t * 0.20 + p.phase) * 0.22;
             p.angle += p.vAngle;
 
-            const op = p.opacity * (0.80 + 0.20 * Math.sin(t * 0.40 + p.phase));
+            // Butterflies flap wings: scale y slightly
+            const flapY = p.type === 'butterfly'
+                ? 1 + 0.08 * Math.sin(t * 3.5 + p.phase)
+                : 1;
+
+            const op = p.opacity * (0.82 + 0.18 * Math.sin(t * 0.38 + p.phase));
 
             ctx.save();
             ctx.translate(p.x, p.y);
             ctx.rotate(p.angle);
+            ctx.scale(1, flapY);
             ctx.globalAlpha = op;
             DRAW_FNS[p.type](ctx, p.size);
             ctx.restore();
@@ -597,15 +660,15 @@ if (heroCanvas) {
         animFrame = requestAnimationFrame(animateHero);
     }
 
-    // Mouse tracking on the canvas element
-    heroCanvas.addEventListener('mousemove', e => {
+    // Mouse tracking — use document so it works even with hero content on top
+    function updateMouse(e) {
         const rect = heroCanvas.getBoundingClientRect();
         mouseX = e.clientX - rect.left;
         mouseY = e.clientY - rect.top;
-    });
-    heroCanvas.addEventListener('mouseleave', () => {
-        mouseX = -9999; mouseY = -9999;
-    });
+    }
+    document.addEventListener('mousemove', updateMouse, { passive: true });
+    // Reset when mouse leaves the viewport
+    document.addEventListener('mouseleave', () => { mouseX = -9999; mouseY = -9999; });
 
     resizeHero();
     createParticles();

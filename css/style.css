@@ -346,14 +346,7 @@ h1, h2, h3, h4 {
     66%       { transform: translate(-18px, 18px) scale(0.97); }
 }
 
-.hero-grid-overlay {
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 60px 60px;
-}
+/* hero-grid-overlay removed */
 
 /* Hero layout */
 .hero .container {
