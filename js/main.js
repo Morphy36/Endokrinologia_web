@@ -269,8 +269,8 @@ if (heroCanvas) {
        Forewings + hindwings + body + antennae
     ══════════════════════════════════════════════════ */
     function drawButterfly(ctx, s) {
-        const lw = s / 20;
-        ctx.shadowColor = ink(0.65); ctx.shadowBlur = s * 0.45;
+        const lw = s / 22;
+        ctx.shadowColor = ink(0.35); ctx.shadowBlur = s * 0.25;
 
         // Upper-right forewing
         ctx.beginPath();
@@ -278,8 +278,8 @@ if (heroCanvas) {
         ctx.bezierCurveTo(s * 0.30, -s * 1.10, s * 1.30, -s * 1.20, s * 1.40, -s * 0.40);
         ctx.bezierCurveTo(s * 1.35,  s * 0.10, s * 0.55,  s * 0.22, s * 0.06,  s * 0.10);
         ctx.closePath();
-        ctx.fillStyle = ink(0.10); ctx.fill();
-        set(lw, 0.95); ctx.stroke();
+        ctx.fillStyle = ink(0.07); ctx.fill();
+        set(lw, 0.80); ctx.stroke();
 
         // Upper-left forewing (mirror)
         ctx.beginPath();
@@ -287,8 +287,8 @@ if (heroCanvas) {
         ctx.bezierCurveTo(-s * 0.30, -s * 1.10, -s * 1.30, -s * 1.20, -s * 1.40, -s * 0.40);
         ctx.bezierCurveTo(-s * 1.35,  s * 0.10, -s * 0.55,  s * 0.22, -s * 0.06,  s * 0.10);
         ctx.closePath();
-        ctx.fillStyle = ink(0.10); ctx.fill();
-        set(lw, 0.95); ctx.stroke();
+        ctx.fillStyle = ink(0.07); ctx.fill();
+        set(lw, 0.80); ctx.stroke();
 
         // Lower-right hindwing
         ctx.beginPath();
@@ -296,8 +296,8 @@ if (heroCanvas) {
         ctx.bezierCurveTo(s * 0.40,  s * 0.22, s * 1.25,  s * 0.15, s * 1.30,  s * 0.70);
         ctx.bezierCurveTo(s * 1.18,  s * 1.10, s * 0.35,  s * 1.10, s * 0.06,  s * 0.55);
         ctx.closePath();
-        ctx.fillStyle = ink(0.10); ctx.fill();
-        set(lw, 0.95); ctx.stroke();
+        ctx.fillStyle = ink(0.07); ctx.fill();
+        set(lw, 0.80); ctx.stroke();
 
         // Lower-left hindwing (mirror)
         ctx.beginPath();
@@ -305,8 +305,8 @@ if (heroCanvas) {
         ctx.bezierCurveTo(-s * 0.40,  s * 0.22, -s * 1.25,  s * 0.15, -s * 1.30,  s * 0.70);
         ctx.bezierCurveTo(-s * 1.18,  s * 1.10, -s * 0.35,  s * 1.10, -s * 0.06,  s * 0.55);
         ctx.closePath();
-        ctx.fillStyle = ink(0.10); ctx.fill();
-        set(lw, 0.95); ctx.stroke();
+        ctx.fillStyle = ink(0.07); ctx.fill();
+        set(lw, 0.80); ctx.stroke();
 
         ctx.shadowBlur = 0;
 
@@ -576,17 +576,16 @@ if (heroCanvas) {
 
     function createParticles() {
         particles = [];
-        // More particles, bigger: 5 butterflies + 4 steroids + 4 thyroxines + 3 catecholamines + 3 insulins = 19
+        // 2 butterflies + 3 steroids + 3 thyroxines + 2 catecholamines + 2 insulins = 12
         const types = [
-            'butterfly', 'butterfly', 'butterfly', 'butterfly', 'butterfly',
-            'steroid',   'steroid',   'steroid',   'steroid',
-            'thyroxine', 'thyroxine', 'thyroxine', 'thyroxine',
-            'catecholamine', 'catecholamine', 'catecholamine',
-            'insulin', 'insulin', 'insulin'
+            'butterfly', 'butterfly',
+            'steroid',   'steroid',   'steroid',
+            'thyroxine', 'thyroxine', 'thyroxine',
+            'catecholamine', 'catecholamine',
+            'insulin', 'insulin'
         ];
         types.forEach((type, i) => {
-            // Spread evenly + random jitter across canvas
-            const cols = 5;
+            const cols = 4;
             const col  = i % cols;
             const row  = Math.floor(i / cols);
             const rows = Math.ceil(types.length / cols);
@@ -597,10 +596,10 @@ if (heroCanvas) {
                 homeX: hx, homeY: hy,
                 x:     hx, y:     hy,
                 vx: 0,  vy: 0,
-                size:    Math.random() * 18 + 50,        // 50–68 px — big & clear
+                size:    Math.random() * 12 + 34,        // 34–46 px — moderate size
                 angle:   Math.random() * Math.PI * 2,
-                vAngle:  (Math.random() - 0.5) * 0.0014,
-                opacity: Math.random() * 0.10 + 0.30,   // 0.30–0.40
+                vAngle:  (Math.random() - 0.5) * 0.0010,
+                opacity: Math.random() * 0.08 + 0.16,   // 0.16–0.24 — subtle
                 phase:   Math.random() * Math.PI * 2
             });
         });
@@ -611,30 +610,27 @@ if (heroCanvas) {
         t += 0.005;
 
         particles.forEach(p => {
-            // Spring back towards home position
-            const kSpring = 0.008;
-            p.vx += (p.homeX - p.x) * kSpring;
-            p.vy += (p.homeY - p.y) * kSpring;
+            // Spring back towards home position — lazy, gentle
+            p.vx += (p.homeX - p.x) * 0.005;
+            p.vy += (p.homeY - p.y) * 0.005;
 
-            // Mouse FLEE — strong repulsion, particles run away
+            // Mouse flee — soft, slow reaction
             const mdx   = p.x - mouseX;
             const mdy   = p.y - mouseY;
             const dist2 = mdx * mdx + mdy * mdy;
-            const R     = 220;   // large influence radius
+            const R     = 180;
             if (dist2 < R * R && dist2 > 0.1) {
                 const dist  = Math.sqrt(dist2);
-                // Inverse-square-like force: much stronger when close
-                const force = Math.pow(1 - dist / R, 1.6) * 8.0;
+                const force = Math.pow(1 - dist / R, 1.8) * 2.8;
                 p.vx += (mdx / dist) * force;
                 p.vy += (mdy / dist) * force;
-                // Spin faster when fleeing
-                p.vAngle += (Math.random() - 0.5) * 0.008;
+                p.vAngle += (Math.random() - 0.5) * 0.003;
             }
 
-            // Damping
-            p.vx     *= 0.90;
-            p.vy     *= 0.90;
-            p.vAngle *= 0.92;
+            // Heavy damping — slow, fluid movement
+            p.vx     *= 0.94;
+            p.vy     *= 0.94;
+            p.vAngle *= 0.95;
 
             // Integrate + gentle ambient drift
             p.x     += p.vx + Math.sin(t * 0.26 + p.phase) * 0.28;
