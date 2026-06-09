@@ -131,8 +131,28 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Apply trial-banner dismissal before paint (no flash / layout shift) -->
+    <script>
+        try {
+            if (localStorage.getItem('trialBannerDismissed') === '1') {
+                document.documentElement.classList.add('trial-dismissed');
+            }
+        } catch (e) {}
+    </script>
 </head>
 <body>
+    <!-- Skúšobná technická prevádzka — oznamovací pruh -->
+    <div class="trial-banner" id="trialBanner" role="status">
+        <span class="trial-banner-text">
+            <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+            Stránka je momentálne v <strong>skúšobnej technickej prevádzke</strong> — niektoré údaje a funkcie sa môžu meniť.
+        </span>
+        <button class="trial-banner-close" id="trialBannerClose" aria-label="Zavrieť oznámenie">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+    </div>
+
     <!-- Cursor glow -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
@@ -1293,6 +1313,11 @@
                         <li style="margin-top:8px; color: rgba(255,255,255,0.35); font-size:0.8rem">Telefonicky: 9:00 – 11:00</li>
                     </ul>
                 </div>
+            </div>
+
+            <div class="footer-trial">
+                <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+                Stránka je v skúšobnej technickej prevádzke.
             </div>
 
             <div class="footer-bottom">

@@ -1,4 +1,15 @@
 /* ============================================
+   Trial Operation Banner
+   ============================================ */
+const trialBannerClose = document.getElementById('trialBannerClose');
+if (trialBannerClose) {
+    trialBannerClose.addEventListener('click', () => {
+        document.documentElement.classList.add('trial-dismissed');
+        try { localStorage.setItem('trialBannerDismissed', '1'); } catch (e) {}
+    });
+}
+
+/* ============================================
    Progress Bar
    ============================================ */
 const progressBar = document.getElementById('progressBar');
