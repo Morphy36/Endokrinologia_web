@@ -1,0 +1,38 @@
+# MUDr. Zuzana Samcová – Endokrinológia Žilina
+
+> Endokrinologická ambulancia v Žiline. Odborná diagnostika a liečba hormonálnych ochorení.
+
+## O ambulancii
+
+MUDr. Zuzana Samcová je špecialistka v odbore **endokrinológia** s viac ako 11 rokmi praxe.
+Ambulancia sa nachádza v budove **Medivi** na adrese M. R. Štefánika 842/47, 010 01 Žilina (2. poschodie).
+
+Prijíma pacientov všetkých troch slovenských zdravotných poisťovní: **VšZP, Dôvera, Union**.
+
+## Čo lieči
+
+- **Ochorenia štítnej žľazy** – hypotyreóza, hypertyreóza, Gravesova choroba, Hashimotova tyreoiditída, strumy, uzliny
+- **Diabetes mellitus** – typ 1, typ 2, inzulinoterapia, kontinuálny monitoring glukózy
+- **Obezita a metabolický syndróm** – komplexná liečba nadváhy, inzulínová rezistencia
+- **Hormónové poruchy** – poruchy hypofýzy (GH, prolaktín, ACTH, TSH), nadobličiek, pohlavných žliaz
+- **Osteoporóza** – diagnostika denzitometriou, liečba, prevencia zlomenín
+- **Ochorenia nadobličiek a hypofýzy** – Cushingov syndróm, Addisonova choroba, akromegália
+
+## Kontakt
+
+- **Adresa:** M. R. Štefánika 842/47, 010 01 Žilina, budova Medivi, 2. poschodie
+- **Telefón:** 041 451 0421
+- **Ordinačné hodiny:** Pondelok – Piatok 7:00 – 15:00
+
+## Vzdelanie a prax
+
+- Absolventka Lekárskej fakulty, Univerzita Komenského Bratislava
+- Odborná prax: NsP Považská Bystrica (pneumologické oddelenie, interné oddelenie)
+- Atestácia z vnútorného lekárstva
+- Atestácia z endokrinológie
+- Aktuálne: endokrinologická ambulancia, budova Medivi, Žilina
+
+## Web
+
+- Hlavná stránka: https://morphy36.github.io/Endokrinologia_web/
+- Sekcie: O mne · Služby · Pre pacientov · Kontakt
