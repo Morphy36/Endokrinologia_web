@@ -114,9 +114,10 @@ document.querySelectorAll('.accordion-header').forEach(header => {
         const body      = item.querySelector('.accordion-body');
         const bodyInner = item.querySelector('.accordion-body-inner');
         const isOpen    = item.classList.contains('open');
+        const group     = header.closest('.accordion') || document;
 
-        // Close all open items first
-        document.querySelectorAll('.accordion-item.open').forEach(open => {
+        // Close other open items within the SAME accordion group
+        group.querySelectorAll('.accordion-item.open').forEach(open => {
             open.classList.remove('open');
             open.querySelector('.accordion-body').style.maxHeight = '0';
             open.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
@@ -158,26 +159,56 @@ const formSuccess = document.getElementById('formSuccess');
 const submitBtn   = document.getElementById('submitBtn');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', e => {
+    const resetBtn = (delay = 6000) => setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Odoslať správu';
+        submitBtn.style.background = '';
+        formSuccess.classList.remove('show');
+    }, delay);
+
+    const showError = (msg) => {
+        submitBtn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ' + msg;
+        submitBtn.style.background = 'linear-gradient(135deg,#DC2626,#EF4444)';
+        resetBtn(5000);
+    };
+
+    contactForm.addEventListener('submit', async e => {
         e.preventDefault();
+
+        // Native validation (required fields + GDPR checkbox)
+        if (!contactForm.checkValidity()) {
+            contactForm.reportValidity();
+            return;
+        }
 
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Odosielam...';
 
-        // Simulate async send — replace body with real fetch/Formspree call
-        setTimeout(() => {
-            submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Odoslané!';
-            submitBtn.style.background = 'linear-gradient(135deg,#059669,#10B981)';
-            formSuccess.classList.add('show');
-            contactForm.reset();
+        const data = Object.fromEntries(new FormData(contactForm).entries());
 
-            setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Odoslať správu';
-                submitBtn.style.background = '';
-                formSuccess.classList.remove('show');
-            }, 6000);
-        }, 1400);
+        try {
+            const res = await fetch('https://api.web3forms.com/submit', {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body:    JSON.stringify(data)
+            });
+            const json = await res.json();
+
+            if (res.ok && json.success) {
+                submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Odoslané!';
+                submitBtn.style.background = 'linear-gradient(135deg,#059669,#10B981)';
+                formSuccess.classList.add('show');
+                contactForm.reset();
+                resetBtn(6000);
+            } else {
+                // Most common cause: access_key still set to the placeholder
+                showError('Skúste neskôr');
+                console.error('Web3Forms error:', json);
+            }
+        } catch (err) {
+            showError('Chyba spojenia');
+            console.error('Form submit failed:', err);
+        }
     });
 }
 
