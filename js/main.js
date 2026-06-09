@@ -134,9 +134,18 @@ document.querySelectorAll('.accordion-header').forEach(header => {
    Back to Top
    ============================================ */
 const backToTop = document.getElementById('backToTop');
+const mobileBook = document.getElementById('mobileBook');
 
 function updateBackToTop() {
     backToTop.classList.toggle('visible', window.scrollY > 450);
+
+    // Floating mobile booking CTA: show after hero, hide near the contact section
+    if (mobileBook) {
+        const contact = document.getElementById('kontakt');
+        const nearContact = contact &&
+            contact.getBoundingClientRect().top < window.innerHeight * 0.9;
+        mobileBook.classList.toggle('visible', window.scrollY > 500 && !nearContact);
+    }
 }
 
 backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
@@ -235,8 +244,9 @@ if (cursorGlow) {
    Mouse flee physics: elements run away from cursor
    ============================================ */
 const heroCanvas = document.getElementById('heroParticles');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-if (heroCanvas) {
+if (heroCanvas && !prefersReducedMotion) {
     const ctx  = heroCanvas.getContext('2d');
     let particles = [];
     let animFrame;

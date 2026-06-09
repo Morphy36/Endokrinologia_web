@@ -2141,3 +2141,104 @@ body:hover .cursor-glow { opacity: 1; }
     .endo-info { min-height: auto; }
 }
 
+/* ============================================
+   ✦ DESIGN POLISH (added)
+   ============================================ */
+
+/* --- Service card: animated gradient top accent --- */
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s var(--ease);
+    z-index: 2;
+}
+.service-card:hover::after { transform: scaleX(1); }
+
+/* Icon gets a soft colored ring-glow on hover */
+.service-card:hover .service-icon {
+    transform: scale(1.12) rotate(6deg);
+    box-shadow: 0 8px 22px -6px currentColor;
+}
+
+/* --- Refined section eyebrow with leading dash --- */
+.section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+}
+.section-eyebrow::before {
+    content: '';
+    width: 22px; height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+.section-eyebrow--light::before {
+    background: linear-gradient(90deg, #5EEAD4, #C4B5FD);
+}
+
+/* --- Buttons: subtle press feedback --- */
+.btn:active { transform: translateY(1px) scale(0.985); }
+
+/* --- Accessible focus rings (keyboard only) --- */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.endo-node:focus-visible,
+.accordion-header:focus-visible {
+    outline: 3px solid rgba(124, 58, 237, 0.55);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* --- Floating mobile "Objednať sa" CTA --- */
+.mobile-book {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 48;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 24px;
+    border-radius: 50px;
+    font-family: var(--font-h);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    box-shadow: 0 12px 30px -6px rgba(13,148,136,0.55);
+    transform: translateY(140%);
+    transition: transform 0.45s var(--ease);
+}
+.mobile-book.visible { transform: translateY(0); }
+.mobile-book:active { transform: scale(0.97); }
+
+@media (max-width: 900px) {
+    .mobile-book { display: flex; }
+    /* nudge back-to-top up so it doesn't overlap the booking bar */
+    .back-to-top { bottom: 84px; }
+}
+
+/* --- Respect users who prefer reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .hero-particles { display: none; }
+}
+

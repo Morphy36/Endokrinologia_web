@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0D9488"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="wing" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CCFBF1"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+  <!-- rounded square background -->
+  <rect x="0" y="0" width="64" height="64" rx="15" fill="url(#bg)"/>
+  <!-- thyroid butterfly: two lobes + isthmus -->
+  <g fill="url(#wing)" stroke="#ffffff" stroke-width="1.6" stroke-linejoin="round">
+    <!-- right lobe -->
+    <path d="M33 21 C36 14 50 13 51 25 C51.6 33 47 41 39 41 C34 41 33 33 33 28 Z"/>
+    <!-- left lobe -->
+    <path d="M31 21 C28 14 14 13 13 25 C12.4 33 17 41 25 41 C30 41 31 33 31 28 Z"/>
+  </g>
+  <!-- isthmus bridge -->
+  <ellipse cx="32" cy="36" rx="4.2" ry="5" fill="#ffffff" opacity="0.92"/>
+  <!-- antennae -->
+  <g stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M30 18 C27 12 28 9 29.5 8"/>
+    <path d="M34 18 C37 12 36 9 34.5 8"/>
+  </g>
+  <circle cx="29.5" cy="8" r="1.7" fill="#ffffff"/>
+  <circle cx="34.5" cy="8" r="1.7" fill="#ffffff"/>
+</svg>

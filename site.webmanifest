@@ -1,0 +1,14 @@
+{
+  "name": "MUDr. Zuzana Samcová – Endokrinológia Žilina",
+  "short_name": "Endokrinológia ZS",
+  "description": "Endokrinologická ambulancia v Žiline – štítna žľaza, diabetes, hormóny.",
+  "start_url": "/Endokrinologia_web/",
+  "scope": "/Endokrinologia_web/",
+  "display": "standalone",
+  "background_color": "#0A0F1E",
+  "theme_color": "#0D9488",
+  "lang": "sk",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
