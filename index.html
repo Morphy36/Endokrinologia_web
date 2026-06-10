@@ -126,6 +126,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Styles -->
@@ -142,6 +143,9 @@
     </script>
 </head>
 <body>
+    <!-- Skip to content (a11y) -->
+    <a class="skip-link" href="#main">Preskočiť na obsah</a>
+
     <!-- Skúšobná technická prevádzka — oznamovací pruh -->
     <div class="trial-banner" id="trialBanner" role="status">
         <span class="trial-banner-text">
@@ -191,7 +195,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main">
 
         <!-- ========================
              HERO
@@ -207,9 +211,15 @@
 
             <div class="container">
                 <div class="hero-content">
-                    <div class="hero-badge">
-                        <span class="hero-badge-dot"></span>
-                        Endokrinologická ambulancia · Budova Medivi · Žilina
+                    <div class="hero-badge-row">
+                        <div class="hero-badge">
+                            <span class="hero-badge-dot"></span>
+                            Endokrinologická ambulancia · Budova Medivi · Žilina
+                        </div>
+                        <div class="hero-badge open-status" id="openStatusHero" hidden>
+                            <span class="open-status-dot"></span>
+                            <span class="open-status-text"></span>
+                        </div>
                     </div>
 
                     <h1 class="hero-title">
@@ -460,7 +470,7 @@
 
                 <div class="services-grid">
 
-                    <article class="service-card reveal">
+                    <article class="service-card reveal" data-gland="thyroid">
                             <div class="card-shine"></div>
                         <div class="service-icon service-icon--teal">
                             <i class="fa-solid fa-ribbon"></i>
@@ -476,7 +486,7 @@
                         </div>
                     </article>
 
-                    <article class="service-card reveal" style="--reveal-delay: 0.1s">
+                    <article class="service-card reveal" style="--reveal-delay: 0.1s" data-gland="pancreas">
                             <div class="card-shine"></div>
                         <div class="service-icon service-icon--blue">
                             <i class="fa-solid fa-droplet"></i>
@@ -492,7 +502,7 @@
                         </div>
                     </article>
 
-                    <article class="service-card reveal" style="--reveal-delay: 0.2s">
+                    <article class="service-card reveal" style="--reveal-delay: 0.2s" data-gland="pancreas">
                             <div class="card-shine"></div>
                         <div class="service-icon service-icon--violet">
                             <i class="fa-solid fa-scale-balanced"></i>
@@ -508,7 +518,7 @@
                         </div>
                     </article>
 
-                    <article class="service-card reveal" style="--reveal-delay: 0.05s">
+                    <article class="service-card reveal" style="--reveal-delay: 0.05s" data-gland="pituitary">
                             <div class="card-shine"></div>
                         <div class="service-icon service-icon--pink">
                             <i class="fa-solid fa-flask-vial"></i>
@@ -524,7 +534,7 @@
                         </div>
                     </article>
 
-                    <article class="service-card reveal" style="--reveal-delay: 0.15s">
+                    <article class="service-card reveal" style="--reveal-delay: 0.15s" data-gland="parathyroid">
                             <div class="card-shine"></div>
                         <div class="service-icon service-icon--amber">
                             <i class="fa-solid fa-bone"></i>
@@ -540,7 +550,7 @@
                         </div>
                     </article>
 
-                    <article class="service-card reveal" style="--reveal-delay: 0.25s">
+                    <article class="service-card reveal" style="--reveal-delay: 0.25s" data-gland="adrenal">
                             <div class="card-shine"></div>
                         <div class="service-icon service-icon--green">
                             <i class="fa-solid fa-circle-nodes"></i>
@@ -557,6 +567,62 @@
                     </article>
 
                 </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             AKO PREBIEHA VYŠETRENIE
+             ======================== -->
+        <section class="section" id="priebeh" aria-labelledby="process-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-eyebrow reveal">Priebeh návštevy</div>
+                    <h2 class="section-title reveal" id="process-heading" style="--reveal-delay: 0.1s">
+                        Ako prebieha <span class="gradient-text">vyšetrenie</span>
+                    </h2>
+                    <p class="section-subtitle reveal" style="--reveal-delay: 0.2s">
+                        Od objednania po výsledky — jednoducho a bez stresu v štyroch krokoch.
+                    </p>
+                </div>
+
+                <ol class="process-steps">
+                    <li class="process-step reveal">
+                        <div class="process-num">1</div>
+                        <div class="process-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></div>
+                        <h3 class="process-title">Objednanie</h3>
+                        <p class="process-text">
+                            Zavolajte počas telefonických hodín (9:00–11:00) alebo napíšte cez formulár.
+                            Pripravte si výmenný lístok od všeobecného lekára.
+                        </p>
+                    </li>
+                    <li class="process-step reveal" style="--reveal-delay: 0.1s">
+                        <div class="process-num">2</div>
+                        <div class="process-icon"><i class="fa-solid fa-list-check" aria-hidden="true"></i></div>
+                        <h3 class="process-title">Príprava</h3>
+                        <p class="process-text">
+                            Na odbery príďte nalačno (8–12 hodín), pite len čistú vodu.
+                            Lieky na štítnu žľazu užite až po odbere krvi.
+                        </p>
+                    </li>
+                    <li class="process-step reveal" style="--reveal-delay: 0.2s">
+                        <div class="process-num">3</div>
+                        <div class="process-icon"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i></div>
+                        <h3 class="process-title">Vyšetrenie</h3>
+                        <p class="process-text">
+                            Komplexné vyšetrenie trvá 30–45 minút — anamnéza, klinické vyšetrenie
+                            a podľa potreby ultrazvuk štítnej žľazy.
+                        </p>
+                    </li>
+                    <li class="process-step reveal" style="--reveal-delay: 0.3s">
+                        <div class="process-num">4</div>
+                        <div class="process-icon"><i class="fa-solid fa-file-medical" aria-hidden="true"></i></div>
+                        <h3 class="process-title">Výsledky a liečba</h3>
+                        <p class="process-text">
+                            Výsledky vám zrozumiteľne vysvetlíme a spoločne nastavíme liečbu
+                            aj termíny ďalších kontrol.
+                        </p>
+                    </li>
+                </ol>
             </div>
         </section>
 
@@ -878,6 +944,10 @@
                                     <i class="fa-solid fa-calendar-days"></i>
                                 </div>
                                 <h3>Ordinačné hodiny</h3>
+                                <span class="open-status open-status--card" id="openStatusHours" hidden>
+                                    <span class="open-status-dot"></span>
+                                    <span class="open-status-text"></span>
+                                </span>
                             </div>
                             <table class="hours-table" aria-label="Ordinačné hodiny">
                                 <tbody>

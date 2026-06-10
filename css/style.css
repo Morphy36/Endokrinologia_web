@@ -2415,3 +2415,206 @@ textarea:focus-visible,
     margin-inline: auto;
 }
 
+/* ============================================
+   ✦ SKIP LINK (a11y)
+   ============================================ */
+.skip-link {
+    position: fixed;
+    top: 10px; left: 10px;
+    z-index: 200;
+    padding: 12px 22px;
+    border-radius: 50px;
+    background: var(--secondary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transform: translateY(-200%);
+    transition: transform 0.25s var(--ease);
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+/* ============================================
+   ✦ OPEN/CLOSED LIVE STATUS
+   ============================================ */
+.hero-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.open-status { gap: 8px; }
+.open-status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: #34D399;
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+    animation: statusPing 2.2s ease-out infinite;
+}
+.open-status--closed .open-status-dot {
+    background: #F87171;
+    box-shadow: none;
+    animation: none;
+}
+.open-status--closed .open-status-text { opacity: 0.85; }
+
+@keyframes statusPing {
+    0%   { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.55); }
+    70%  { box-shadow: 0 0 0 9px rgba(52, 211, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+/* variant inside the white hours card */
+.open-status--card {
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+    padding: 6px 13px;
+    border-radius: 50px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    background: #ECFDF5;
+    color: #047857;
+    border: 1px solid #A7F3D0;
+}
+.open-status--card.open-status--closed {
+    background: #FEF2F2;
+    color: #B91C1C;
+    border-color: #FECACA;
+}
+
+/* ============================================
+   ✦ PROCESS STEPS (Ako prebieha vyšetrenie)
+   ============================================ */
+.process-steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    counter-reset: step;
+    position: relative;
+    margin-top: 12px;
+}
+
+/* connecting line behind the numbers */
+.process-steps::before {
+    content: '';
+    position: absolute;
+    top: 27px;
+    left: 12%;
+    right: 12%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    opacity: 0.25;
+}
+
+.process-step {
+    position: relative;
+    text-align: center;
+    padding: 0 8px;
+}
+
+.process-num {
+    width: 54px; height: 54px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-h);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    box-shadow: 0 8px 20px -6px rgba(13, 148, 136, 0.5);
+    position: relative;
+    z-index: 1;
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.process-step:hover .process-num {
+    transform: scale(1.12) rotate(-6deg);
+    box-shadow: 0 12px 28px -6px rgba(124, 58, 237, 0.55);
+}
+
+.process-icon {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.process-title {
+    font-size: 1.02rem;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.process-text {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+    .process-steps { grid-template-columns: repeat(2, 1fr); gap: 36px 20px; }
+    .process-steps::before { display: none; }
+}
+@media (max-width: 520px) {
+    .process-steps { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
+}
+
+/* ============================================
+   ✦ SERVICE CARD → MAP LINK
+   ============================================ */
+.service-card[data-gland] { cursor: pointer; }
+
+.service-map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 16px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: var(--font-h);
+    color: var(--primary);
+    position: relative;
+    z-index: 1;
+    opacity: 0.85;
+    transition: var(--t);
+}
+.service-map-link i { transition: transform 0.3s var(--ease); }
+.service-card:hover .service-map-link { opacity: 1; }
+.service-card:hover .service-map-link i { transform: translateX(4px); }
+
+/* ============================================
+   ✦ COPY-TO-CLIPBOARD BUTTON
+   ============================================ */
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    margin-left: 8px;
+    border-radius: 8px;
+    color: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.08);
+    font-size: 0.75rem;
+    vertical-align: middle;
+    transition: var(--t);
+    position: relative;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+.copy-btn.copied { background: #059669; color: #fff; }
+
+/* ============================================
+   ✦ HERO NAME SHIMMER
+   ============================================ */
+.hero-title-name {
+    background-size: 200% 200%;
+    animation: nameShimmer 7s ease-in-out infinite;
+}
+@keyframes nameShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+}
+

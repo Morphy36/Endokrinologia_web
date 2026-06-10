@@ -874,3 +874,109 @@ document.querySelectorAll('.endo-node').forEach(node => {
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && endoPanel && !endoPanel.hidden) closeGlandPanel();
 });
+
+/* ============================================
+   Live "Otvorené / Zatvorené" status
+   Mon–Fri 7:00–15:00, Europe/Bratislava
+   ============================================ */
+function updateOpenStatus() {
+    let day, minutes;
+    try {
+        const parts = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/Bratislava',
+            weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
+        }).formatToParts(new Date());
+        const get = (t) => parts.find(p => p.type === t)?.value;
+        day     = ['Mon','Tue','Wed','Thu','Fri'].indexOf(get('weekday'));
+        minutes = parseInt(get('hour'), 10) % 24 * 60 + parseInt(get('minute'), 10);
+    } catch (e) {
+        const now = new Date();
+        day     = now.getDay() >= 1 && now.getDay() <= 5 ? now.getDay() - 1 : -1;
+        minutes = now.getHours() * 60 + now.getMinutes();
+    }
+
+    const isOpen = day >= 0 && minutes >= 7 * 60 && minutes < 15 * 60;
+
+    ['openStatusHero', 'openStatusHours'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.hidden = false;
+        el.classList.toggle('open-status--closed', !isOpen);
+        el.querySelector('.open-status-text').textContent =
+            isOpen ? 'Teraz otvorené' : 'Momentálne zatvorené';
+    });
+}
+updateOpenStatus();
+setInterval(updateOpenStatus, 60 * 1000);
+
+/* ============================================
+   Service cards → open gland on the endo map
+   ============================================ */
+document.querySelectorAll('.service-card[data-gland]').forEach(card => {
+    const glandId = card.dataset.gland;
+
+    // Inject "show on map" hint link
+    const link = document.createElement('span');
+    link.className = 'service-map-link';
+    link.innerHTML = 'Zobraziť na mape <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>';
+    card.appendChild(link);
+
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'link');
+    card.setAttribute('aria-label', card.querySelector('.service-title').textContent + ' — zobraziť na interaktívnej mape');
+
+    const goToGland = () => {
+        const map = document.getElementById('endo-mapa');
+        if (!map) return;
+        const offset = navbar.offsetHeight + 8;
+        window.scrollTo({
+            top: map.getBoundingClientRect().top + window.scrollY - offset,
+            behavior: 'smooth'
+        });
+        // Activate the matching node + panel once we arrive
+        setTimeout(() => {
+            const node = document.querySelector(`.endo-node[data-id="${glandId}"]`);
+            document.querySelectorAll('.endo-node').forEach(n => n.classList.remove('active'));
+            if (node) node.classList.add('active');
+            showGlandPanel(glandId);
+        }, 550);
+    };
+
+    card.addEventListener('click', goToGland);
+    card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToGland(); }
+    });
+});
+
+/* ============================================
+   Copy-to-clipboard for phone & email (contact section)
+   ============================================ */
+document.querySelectorAll('.contact-item-body a[href^="tel:"], .contact-item-body a[href^="mailto:"]').forEach(link => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-btn';
+    btn.innerHTML = '<i class="fa-regular fa-copy" aria-hidden="true"></i>';
+    btn.setAttribute('aria-label', 'Kopírovať ' + link.textContent.trim());
+    link.insertAdjacentElement('afterend', btn);
+
+    btn.addEventListener('click', async () => {
+        const text = link.textContent.trim();
+        try {
+            await navigator.clipboard.writeText(text);
+        } catch (e) {
+            // Fallback for older browsers
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            ta.remove();
+        }
+        btn.classList.add('copied');
+        btn.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i>';
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = '<i class="fa-regular fa-copy" aria-hidden="true"></i>';
+        }, 1800);
+    });
+});
