@@ -1908,7 +1908,12 @@ body:hover .cursor-glow { opacity: 1; }
     display: grid;
     grid-template-columns: 420px 1fr;
     gap: 60px;
-    align-items: center;
+    align-items: start;
+}
+
+/* keep the diagram in view while reading a long gland panel */
+@media (min-width: 901px) {
+    .endo-diagram-wrap { position: sticky; top: 110px; }
 }
 
 /* SVG Diagram */
@@ -2136,6 +2141,112 @@ body:hover .cursor-glow { opacity: 1; }
     flex-shrink: 0;
 }
 
+/* ── Rich gland panel ── */
+.endo-panel-scroll {
+    max-height: 62vh;
+    overflow-y: auto;
+    padding-right: 12px;
+    margin-right: -6px;
+}
+.endo-panel-scroll:focus-visible { outline: none; }
+.endo-panel-scroll::-webkit-scrollbar { width: 7px; }
+.endo-panel-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
+.endo-panel-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.22); border-radius: 10px; }
+.endo-panel-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.35); }
+
+.endo-rich { color: rgba(255,255,255,0.78); font-size: 0.9rem; line-height: 1.72; }
+.endo-rich > p { margin-bottom: 14px; }
+.endo-rich h4 {
+    font-family: var(--font-h);
+    font-size: 1.02rem;
+    color: #fff;
+    margin: 22px 0 10px;
+    padding-left: 12px;
+    border-left: 3px solid var(--gland-color, var(--primary));
+    line-height: 1.3;
+}
+.endo-rich h5 {
+    font-family: var(--font-h);
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.92);
+    margin: 16px 0 8px;
+}
+.endo-rich ul {
+    list-style: none;
+    margin: 0 0 14px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.endo-rich ul li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.74);
+}
+.endo-rich ul li::before {
+    content: '';
+    position: absolute;
+    left: 2px; top: 9px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gland-color, var(--primary));
+}
+.endo-rich strong { color: #fff; font-weight: 600; }
+
+.endo-produces {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-family: var(--font-h);
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: #fff;
+    background: color-mix(in srgb, var(--gland-color, #0D9488) 28%, transparent);
+    border: 1px solid color-mix(in srgb, var(--gland-color, #0D9488) 55%, transparent);
+}
+
+.endo-note {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.66);
+    background: rgba(255,255,255,0.05);
+    border-left: 3px solid var(--gland-color, var(--primary));
+    border-radius: 0 10px 10px 0;
+    padding: 10px 14px;
+    margin: 0 0 16px !important;
+}
+
+.endo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 18px;
+    font-size: 0.8rem;
+}
+.endo-table th,
+.endo-table td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    vertical-align: top;
+}
+.endo-table th {
+    font-family: var(--font-h);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.04);
+}
+.endo-table td { color: rgba(255,255,255,0.78); }
+.endo-table tbody tr:last-child td { border-bottom: none; }
+
+.endo-diseases {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
 /* ============================================
    Responsive — Endocrine
    ============================================ */
@@ -2145,6 +2256,7 @@ body:hover .cursor-glow { opacity: 1; }
     }
     .endo-diagram-wrap { max-width: 320px; margin: 0 auto; }
     .endo-info { min-height: auto; }
+    .endo-panel-scroll { max-height: none; }
 }
 
 /* ============================================

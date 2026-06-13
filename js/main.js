@@ -771,44 +771,268 @@ const glandData = {
     pituitary: {
         name:     'Hypofýza',
         color:    '#7C3AED',
-        hormones: ['GH', 'TSH', 'LH', 'FSH', 'ACTH', 'Prolaktín'],
-        desc:     'Hypofýza je hlavná endokrinná žľaza — "dirigent" hormonálneho systému. Reguluje väčšinu ostatných endokrinných žliaz prostredníctvom trópnych hormónov.',
-        diseases: ['Akromegália', 'Hypopituitarizmus', 'Prolaktinóm', 'Cushingova choroba']
+        title:    'Hormóny hypofýzy – dirigent hormonálneho systému',
+        hormones: ['GH', 'TSH', 'ACTH', 'FSH', 'LH', 'Prolaktín', 'ADH', 'Oxytocín'],
+        diseases: ['Akromegália', 'Hypopituitarizmus', 'Prolaktinóm', 'Cushingova choroba', 'Diabetes insipidus'],
+        body: `
+            <p>Hypofýza (podmozgová žľaza) je malá žľaza veľkosti hrášku uložená na spodine mozgu v tzv. tureckom sedle. Napriek svojej veľkosti je nadradeným riadiacim centrom väčšiny ostatných endokrinných žliaz — býva označovaná ako „dirigent“ hormonálneho systému. Skladá sa z prednej časti (adenohypofýza) a zadnej časti (neurohypofýza).</p>
+
+            <h4>Predná hypofýza (adenohypofýza)</h4>
+            <p>Produkuje vlastné hormóny, ktoré riadia ďalšie žľazy:</p>
+            <ul>
+                <li><strong>Rastový hormón (GH)</strong> – rast tela a metabolizmus bielkovín, tukov a cukrov</li>
+                <li><strong>TSH</strong> – stimuluje štítnu žľazu</li>
+                <li><strong>ACTH</strong> – stimuluje kôru nadobličiek k tvorbe kortizolu</li>
+                <li><strong>FSH a LH</strong> – riadia činnosť pohlavných žliaz a plodnosť</li>
+                <li><strong>Prolaktín</strong> – tvorba materského mlieka</li>
+            </ul>
+
+            <h4>Zadná hypofýza (neurohypofýza)</h4>
+            <p>Uvoľňuje hormóny tvorené v hypotalame:</p>
+            <ul>
+                <li><strong>ADH (vazopresín)</strong> – hospodárenie s vodou a koncentrácia moču</li>
+                <li><strong>Oxytocín</strong> – sťahy maternice pri pôrode a tvorba mlieka</li>
+            </ul>
+
+            <p class="endo-note">Nadprodukcia rastového hormónu spôsobuje akromegáliu, nedostatok hormónov vedie k hypopituitarizmu. Poruchy hypofýzy môžu ovplyvniť celý hormonálny systém — od rastu cez plodnosť až po reakciu na stres.</p>
+
+            <table class="endo-table">
+                <thead><tr><th>Časť hypofýzy</th><th>Hormón</th><th>Hlavná funkcia</th></tr></thead>
+                <tbody>
+                    <tr><td>Adenohypofýza</td><td>GH</td><td>Rast a metabolizmus</td></tr>
+                    <tr><td>Adenohypofýza</td><td>TSH / ACTH</td><td>Riadenie štítnej žľazy a nadobličiek</td></tr>
+                    <tr><td>Adenohypofýza</td><td>FSH / LH</td><td>Plodnosť a pohlavné žľazy</td></tr>
+                    <tr><td>Neurohypofýza</td><td>ADH / oxytocín</td><td>Hospodárenie s vodou, pôrod</td></tr>
+                </tbody>
+            </table>
+
+            <p>Hypofýza koordinuje takmer celý hormonálny systém. Pri podozrení na jej poruchu je dôležité odborné endokrinologické vyšetrenie.</p>`
     },
+
     thyroid: {
         name:     'Štítna žľaza',
         color:    '#0D9488',
-        hormones: ['T3 (trijódtyronín)', 'T4 (tyroxín)', 'Kalcitonín'],
-        desc:     'Štítna žľaza riadi metabolizmus, telesný rast a vývoj. Produkuje hormóny regulujúce spotrebu energie, telesnú teplotu a funkciu srdca.',
-        diseases: ['Hypotyreóza', 'Hypertyreóza', 'Gravesova choroba', 'Hashimotova tyreoiditída', 'Strumy']
+        title:    'Hormóny štítnej žľazy – riadenie metabolizmu',
+        hormones: ['T4 (tyroxín)', 'T3 (trijódtyronín)', 'Kalcitonín'],
+        diseases: ['Hypotyreóza', 'Hypertyreóza', 'Gravesova choroba', 'Hashimotova tyreoiditída', 'Uzly a strumy', 'Cysty štítnej žľazy'],
+        body: `
+            <p>Štítna žľaza je motýľovitá žľaza uložená v prednej časti krku pod hrtanom. Riadi rýchlosť metabolizmu — teda to, ako telo využíva a vydáva energiu — a ovplyvňuje takmer každý orgán v tele.</p>
+
+            <h4>Hormóny štítnej žľazy</h4>
+            <ul>
+                <li><strong>T4 (tyroxín)</strong> a <strong>T3 (trijódtyronín)</strong> – hlavné hormóny štítnej žľazy; na ich tvorbu je nevyhnutný jód</li>
+                <li><strong>Kalcitonín</strong> – pomáha znižovať hladinu vápnika v krvi</li>
+            </ul>
+
+            <h4>Hlavné funkcie</h4>
+            <ul>
+                <li>regulujú rýchlosť metabolizmu a spotrebu energie,</li>
+                <li>ovplyvňujú telesnú teplotu, srdcovú frekvenciu a krvný tlak,</li>
+                <li>sú nevyhnutné pre vývoj mozgu a rast u detí,</li>
+                <li>ovplyvňujú náladu, trávenie, stav kože a vlasov.</li>
+            </ul>
+
+            <p class="endo-note">Znížená funkcia (hypotyreóza) sa prejavuje únavou, priberaním a zimomravosťou; zvýšená funkcia (hypertyreóza) chudnutím, búšením srdca, nervozitou a potením.</p>
+
+            <h4>Vyšetrenie a výkony v ambulancii</h4>
+            <p>Súčasťou starostlivosti je ultrazvukové vyšetrenie štítnej žľazy a v indikovaných prípadoch <strong>tenkoihlová aspiračná biopsia (FNAB) uzlov</strong> štítnej žľazy na odlíšenie nezhubných a zhubných uzlov, ako aj <strong>evakuácia (odsatie) cýst</strong> štítnej žľazy.</p>
+
+            <table class="endo-table">
+                <thead><tr><th>Hormón</th><th>Hlavná funkcia</th></tr></thead>
+                <tbody>
+                    <tr><td>T4 / T3</td><td>Metabolizmus, energia, telesná teplota</td></tr>
+                    <tr><td>Kalcitonín</td><td>Znižovanie hladiny vápnika</td></tr>
+                </tbody>
+            </table>
+
+            <p>Ochorenia štítnej žľazy patria k najčastejším endokrinným poruchám. Vďaka odbornému vyšetreniu a ultrazvuku je možné ich včas zachytiť a účinne liečiť.</p>`
     },
+
     parathyroid: {
         name:     'Prištítne telieska',
         color:    '#3B82F6',
+        title:    'Hormón prištítnych teliesok – hospodárenie s vápnikom',
         hormones: ['PTH (parathormón)'],
-        desc:     'Štyri malé žľazy za štítnou žľazou regulujú hladinu vápnika a fosforu v krvi — kľúčové pre zdravie kostí a nervovosvalovú funkciu.',
-        diseases: ['Hyperparatyreóza', 'Hypoparatyreóza', 'Osteoporóza']
+        diseases: ['Hyperparatyreóza', 'Hypoparatyreóza', 'Osteoporóza', 'Obličkové kamene'],
+        body: `
+            <p>Prištítne telieska sú zvyčajne štyri drobné žľazy veľkosti šošovice uložené na zadnej strane štítnej žľazy. Hoci sú maličké, zohrávajú kľúčovú úlohu v hospodárení s vápnikom a fosforom — minerálmi nevyhnutnými pre zdravie kostí a správnu funkciu nervov a svalov.</p>
+
+            <h4>Parathormón (PTH)</h4>
+            <p><span class="endo-produces">Produkuje: parathormón (PTH)</span></p>
+            <p><strong>Hlavné funkcie:</strong></p>
+            <ul>
+                <li>zvyšuje hladinu vápnika v krvi,</li>
+                <li>uvoľňuje vápnik z kostí, keď je ho v krvi málo,</li>
+                <li>zvyšuje vstrebávanie vápnika v črevách a obličkách,</li>
+                <li>podieľa sa na aktivácii vitamínu D.</li>
+            </ul>
+
+            <p class="endo-note">Nadmerná tvorba PTH (hyperparatyreóza) môže viesť k odvápneniu kostí, obličkovým kameňom a únave. Nedostatok (hypoparatyreóza) sa prejavuje tŕpnutím a svalovými kŕčmi.</p>
+
+            <table class="endo-table">
+                <thead><tr><th>Hormón</th><th>Hlavná funkcia</th></tr></thead>
+                <tbody>
+                    <tr><td>PTH (parathormón)</td><td>Regulácia vápnika a fosforu, zdravie kostí</td></tr>
+                </tbody>
+            </table>
+
+            <p>Rovnováha vápnika je dôležitá pre kosti, svaly aj nervový systém. Poruchy prištítnych teliesok sa odhaľujú laboratórnym vyšetrením a vyžadujú endokrinologickú starostlivosť.</p>`
     },
+
     adrenal: {
         name:     'Nadobličky',
         color:    '#EC4899',
-        hormones: ['Kortizol', 'Aldosterón', 'Adrenalín', 'Noradrenalín', 'DHEA'],
-        desc:     'Nadobličky sedia na vrchole obličiek a produkujú hormóny stresu (kortizol, adrenalín) aj regulátory krvného tlaku a elektrolytov (aldosterón).',
-        diseases: ['Addisonova choroba', 'Cushingov syndróm', 'Feochromocytóm', 'Primárny hyperaldosteronizmus']
+        title:    'Hormóny nadobličiek – malé žľazy s veľkým významom',
+        hormones: ['Aldosterón', 'Kortizol', 'DHEA / DHEAS', 'Androstendión', 'Adrenalín', 'Noradrenalín'],
+        diseases: ['Addisonova choroba', 'Cushingov syndróm', 'Feochromocytóm', 'Primárny hyperaldosteronizmus'],
+        body: `
+            <p>Nadobličky sú párové žľazy uložené nad obličkami. Napriek svojej malej veľkosti produkujú hormóny nevyhnutné pre život. Podieľajú sa na regulácii krvného tlaku, hospodárenia s vodou a minerálmi, reakcii organizmu na stres, metabolizme aj tvorbe pohlavných hormónov.</p>
+            <p>Nadoblička sa skladá z <strong>kôry nadobličky</strong> a <strong>drene nadobličky</strong>, pričom každá časť produkuje odlišné hormóny.</p>
+
+            <h4>Kôra nadobličky</h4>
+            <p>Kôra nadobličky sa skladá z troch vrstiev:</p>
+
+            <h5>1. Zona glomerulosa (vonkajšia vrstva)</h5>
+            <p><span class="endo-produces">Produkuje: aldosterón</span></p>
+            <p><strong>Hlavné funkcie:</strong></p>
+            <ul>
+                <li>reguluje množstvo sodíka a draslíka v organizme,</li>
+                <li>ovplyvňuje zadržiavanie vody v tele,</li>
+                <li>podieľa sa na udržiavaní normálneho krvného tlaku.</li>
+            </ul>
+            <p class="endo-note">Nadmerná tvorba aldosterónu môže viesť k vysokému krvnému tlaku a nízkej hladine draslíka v krvi.</p>
+
+            <h5>2. Zona fasciculata (stredná vrstva)</h5>
+            <p><span class="endo-produces">Produkuje: kortizol</span></p>
+            <p><strong>Hlavné funkcie:</strong></p>
+            <ul>
+                <li>pomáha organizmu zvládať fyzický a psychický stres,</li>
+                <li>reguluje metabolizmus cukrov, tukov a bielkovín,</li>
+                <li>ovplyvňuje imunitný systém a zápalové procesy,</li>
+                <li>podieľa sa na udržiavaní krvného tlaku a hladiny glukózy v krvi.</li>
+            </ul>
+            <p class="endo-note">Nedostatok kortizolu môže viesť k únave, chudnutiu a nízkemu krvnému tlaku, zatiaľ čo jeho nadbytok spôsobuje Cushingov syndróm.</p>
+
+            <h5>3. Zona reticularis (vnútorná vrstva kôry)</h5>
+            <p><span class="endo-produces">Produkuje: DHEA, DHEAS a androstendión</span></p>
+            <p>Ide o tzv. adrenálne androgény, teda pohlavné hormóny produkované nadobličkami.</p>
+            <p><strong>Hlavné funkcie:</strong></p>
+            <ul>
+                <li>prispievajú k rozvoju sekundárnych pohlavných znakov,</li>
+                <li>podieľajú sa na raste ochlpenia,</li>
+                <li>u žien predstavujú významný zdroj androgénov,</li>
+                <li>ovplyvňujú libido a celkovú vitalitu.</li>
+            </ul>
+            <p class="endo-note">Ich zvýšená tvorba sa môže prejaviť nadmerným ochlpením, akné alebo poruchami menštruačného cyklu.</p>
+
+            <h4>Dreň nadobličky</h4>
+            <p>Dreň nadobličky produkuje tzv. katecholamíny:</p>
+            <ul>
+                <li>adrenalín,</li>
+                <li>noradrenalín,</li>
+                <li>malé množstvo dopamínu.</li>
+            </ul>
+            <p><strong>Hlavné funkcie:</strong></p>
+            <ul>
+                <li>pripravujú organizmus na „boj alebo útek“,</li>
+                <li>zrýchľujú srdcovú frekvenciu,</li>
+                <li>zvyšujú krvný tlak,</li>
+                <li>zvyšujú hladinu glukózy v krvi,</li>
+                <li>zlepšujú prekrvenie svalov počas záťaže.</li>
+            </ul>
+            <p class="endo-note">Pri nadmernej tvorbe katecholamínov (napríklad pri feochromocytóme) sa môžu objavovať záchvaty vysokého krvného tlaku, búšenie srdca, potenie a úzkosť.</p>
+
+            <h4>Prehľad hormónov nadobličiek</h4>
+            <table class="endo-table">
+                <thead><tr><th>Časť nadobličky</th><th>Hormón</th><th>Hlavná funkcia</th></tr></thead>
+                <tbody>
+                    <tr><td>Zona glomerulosa</td><td>Aldosterón</td><td>Regulácia krvného tlaku, sodíka a draslíka</td></tr>
+                    <tr><td>Zona fasciculata</td><td>Kortizol</td><td>Reakcia na stres, metabolizmus, imunita</td></tr>
+                    <tr><td>Zona reticularis</td><td>DHEA, DHEAS, androstendión</td><td>Tvorba pohlavných hormónov</td></tr>
+                    <tr><td>Dreň nadobličky</td><td>Adrenalín, noradrenalín</td><td>Akútna stresová reakcia</td></tr>
+                </tbody>
+            </table>
+
+            <p>Nadobličky zohrávajú kľúčovú úlohu v udržiavaní vnútorného prostredia organizmu. Poruchy ich funkcie môžu viesť k závažným hormonálnym ochoreniam, preto je pri podozrení na ochorenie nadobličiek dôležité odborné endokrinologické vyšetrenie.</p>`
     },
+
     pancreas: {
         name:     'Pankreas',
         color:    '#F97316',
-        hormones: ['Inzulín', 'Glukagón', 'Somatostatín'],
-        desc:     'Endokrinná časť pankreasu (Langerhansove ostrovčeky) reguluje hladinu krvného cukru. Inzulín znižuje a glukagón zvyšuje glykémiu.',
-        diseases: ['Diabetes mellitus typ 1', 'Diabetes mellitus typ 2', 'Hypoglykémia', 'Inzulinóm']
+        title:    'Hormóny pankreasu – riadenie hladiny cukru',
+        hormones: ['Inzulín', 'Glukagón', 'Somatostatín', 'Pankreatický polypeptid'],
+        diseases: ['Diabetes mellitus 1. typu', 'Diabetes mellitus 2. typu', 'Hypoglykémia', 'Inzulinóm'],
+        body: `
+            <p>Pankreas (podžalúdková žľaza) má dvojakú funkciu — tráviacu, pri ktorej tvorí tráviace enzýmy, a hormonálnu. Endokrinnú časť tvoria tzv. <strong>Langerhansove ostrovčeky</strong>, ktoré presne regulujú hladinu cukru (glukózy) v krvi.</p>
+
+            <h4>Bunky ostrovčekov a ich hormóny</h4>
+            <ul>
+                <li><strong>Beta-bunky → inzulín</strong> – znižuje hladinu cukru v krvi tým, že umožňuje bunkám prijímať glukózu</li>
+                <li><strong>Alfa-bunky → glukagón</strong> – zvyšuje hladinu cukru uvoľňovaním zásob z pečene</li>
+                <li><strong>Delta-bunky → somatostatín</strong> – tlmí uvoľňovanie inzulínu a glukagónu</li>
+                <li><strong>PP-bunky → pankreatický polypeptid</strong> – ovplyvňuje trávenie a chuť do jedla</li>
+            </ul>
+
+            <h4>Hlavné funkcie</h4>
+            <ul>
+                <li>udržiavanie stabilnej hladiny cukru v krvi,</li>
+                <li>hospodárenie organizmu s energiou,</li>
+                <li>jemná rovnováha medzi ukladaním a uvoľňovaním glukózy.</li>
+            </ul>
+
+            <p class="endo-note">Porucha tvorby alebo účinku inzulínu vedie k cukrovke (diabetes mellitus). Naopak nadmerná tvorba inzulínu (napr. pri inzulinóme) spôsobuje nízku hladinu cukru — hypoglykémiu.</p>
+
+            <table class="endo-table">
+                <thead><tr><th>Hormón</th><th>Hlavná funkcia</th></tr></thead>
+                <tbody>
+                    <tr><td>Inzulín</td><td>Znižuje hladinu cukru v krvi</td></tr>
+                    <tr><td>Glukagón</td><td>Zvyšuje hladinu cukru v krvi</td></tr>
+                    <tr><td>Somatostatín</td><td>Reguluje uvoľňovanie ostatných hormónov</td></tr>
+                </tbody>
+            </table>
+
+            <p>Endokrinná funkcia pankreasu je nevyhnutná pre stabilný metabolizmus cukru. Jej poruchy sa odhaľujú laboratórnym vyšetrením a vyžadujú dlhodobú odbornú starostlivosť.</p>`
     },
+
     gonads: {
         name:     'Pohlavné žľazy',
         color:    '#10B981',
+        title:    'Hormóny pohlavných žliaz – reprodukcia a vitalita',
         hormones: ['Estrogén', 'Progesterón', 'Testosterón', 'Inhibín'],
-        desc:     'Vaječníky a semenníky produkujú pohlavné hormóny regulujúce reprodukciu, sekundárne pohlavné znaky a hustotu kostí.',
-        diseases: ['PCOS', 'Hypogonadizmus', 'Predčasná menopauza', 'Poruchy fertility']
+        diseases: ['PCOS', 'Hypogonadizmus', 'Predčasná menopauza', 'Poruchy plodnosti'],
+        body: `
+            <p>Pohlavné žľazy (gonády) — u žien <strong>vaječníky</strong>, u mužov <strong>semenníky</strong> — produkujú pohlavné hormóny a zabezpečujú tvorbu pohlavných buniek. Ich činnosť riadi hypofýza prostredníctvom hormónov FSH a LH.</p>
+
+            <h4>Vaječníky (u žien)</h4>
+            <ul>
+                <li><strong>Estrogény</strong> – vývoj a udržiavanie ženských pohlavných znakov, riadenie menštruačného cyklu, ochrana kostí</li>
+                <li><strong>Progesterón</strong> – príprava maternice na tehotenstvo a jeho udržiavanie</li>
+            </ul>
+
+            <h4>Semenníky (u mužov)</h4>
+            <ul>
+                <li><strong>Testosterón</strong> – mužské pohlavné znaky, tvorba spermií, svalová hmota a libido</li>
+            </ul>
+
+            <h4>Hlavné funkcie</h4>
+            <ul>
+                <li>riadia pohlavné dozrievanie a reprodukciu,</li>
+                <li>ovplyvňujú hustotu kostí, svalovú hmotu a rozloženie tuku,</li>
+                <li>ovplyvňujú náladu, libido a celkovú vitalitu.</li>
+            </ul>
+
+            <p class="endo-note">Hormonálna nerovnováha sa môže prejaviť poruchami menštruačného cyklu, zníženou plodnosťou, syndrómom polycystických vaječníkov (PCOS) alebo predčasnou menopauzou.</p>
+
+            <table class="endo-table">
+                <thead><tr><th>Žľaza</th><th>Hormón</th><th>Hlavná funkcia</th></tr></thead>
+                <tbody>
+                    <tr><td>Vaječníky</td><td>Estrogén</td><td>Ženské znaky, cyklus, kosti</td></tr>
+                    <tr><td>Vaječníky</td><td>Progesterón</td><td>Tehotenstvo</td></tr>
+                    <tr><td>Semenníky</td><td>Testosterón</td><td>Mužské znaky, spermie, libido</td></tr>
+                </tbody>
+            </table>
+
+            <p>Pohlavné hormóny ovplyvňujú nielen reprodukciu, ale aj kosti, svaly a psychickú pohodu. Ich poruchy patria do oblasti endokrinológie a vyžadujú individuálny prístup.</p>`
     }
 };
 
@@ -819,27 +1043,31 @@ function showGlandPanel(id) {
     endoPanel.innerHTML = `
         <div class="endo-panel-header">
             <span class="endo-panel-dot" style="background:${g.color}"></span>
-            <h3 class="endo-panel-title">${g.name}</h3>
-            <button class="endo-panel-close" id="endoPanelClose" aria-label="Zavrieť">
+            <h3 class="endo-panel-title">${g.title || g.name}</h3>
+            <button class="endo-close" id="endoPanelClose" aria-label="Zavrieť">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
-        <p class="endo-panel-desc">${g.desc}</p>
-        <div class="endo-panel-section">
-            <span class="endo-panel-label">Hormóny</span>
+        <div class="endo-panel-scroll" tabindex="0">
             <div class="endo-hormones">
-                ${g.hormones.map(h => `<span class="hormone-tag" style="border-color:${g.color};color:${g.color}">${h}</span>`).join('')}
+                ${g.hormones.map(h => `<span class="endo-hormone-tag">${h}</span>`).join('')}
             </div>
-        </div>
-        <div class="endo-panel-section">
-            <span class="endo-panel-label">Ochorenia v ambulancii</span>
-            <ul class="endo-diseases">
-                ${g.diseases.map(d => `<li><i class="fa-solid fa-circle-dot" style="color:${g.color}"></i> ${d}</li>`).join('')}
-            </ul>
+            <div class="endo-rich" style="--gland-color:${g.color}">
+                ${g.body}
+            </div>
+            <div class="endo-diseases">
+                <h4>Ochorenia, ktoré liečime</h4>
+                <div class="endo-disease-list">
+                    ${g.diseases.map(d => `<div class="endo-disease-item" style="color:${g.color}"><span>${d}</span></div>`).join('')}
+                </div>
+            </div>
         </div>`;
 
     endoPanel.hidden = false;
     if (endoDefault) endoDefault.style.display = 'none';
+
+    const scroll = endoPanel.querySelector('.endo-panel-scroll');
+    if (scroll) scroll.scrollTop = 0;
 
     document.getElementById('endoPanelClose')?.addEventListener('click', closeGlandPanel);
 }
@@ -980,3 +1208,4 @@ document.querySelectorAll('.contact-item-body a[href^="tel:"], .contact-item-bod
         }, 1800);
     });
 });
+
