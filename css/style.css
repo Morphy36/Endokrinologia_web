@@ -2511,6 +2511,51 @@ textarea:focus-visible,
     .trial-banner { font-size: 0.76rem; padding: 0 40px 0 12px; }
 }
 
+/* ── Holistic / EBM approach callout (About) ── */
+.approach-callout {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-top: 30px;
+    padding: 20px 22px;
+    border-radius: var(--r);
+    background: linear-gradient(135deg, var(--primary-xlight), #ffffff);
+    border: 1px solid var(--primary-light);
+}
+.approach-icon {
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff; font-size: 1.15rem; flex-shrink: 0;
+}
+.approach-body strong {
+    display: block;
+    font-family: var(--font-h);
+    color: var(--text);
+    margin-bottom: 5px;
+    font-size: 1.02rem;
+}
+.approach-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.62; margin: 0; }
+
+/* ── First-visit fee note ── */
+.fee-note {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    color: #065F46;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+.fee-note i { color: #059669; font-size: 1rem; flex-shrink: 0; }
+.fee-note strong { color: #064E3B; }
+.fee-note--card { margin-top: 14px; padding: 10px 14px; font-size: 0.82rem; }
+
 .footer-trial {
     display: flex;
     align-items: center;

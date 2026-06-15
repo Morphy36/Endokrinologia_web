@@ -961,7 +961,7 @@ const glandData = {
         color:    '#F97316',
         title:    'Hormóny pankreasu – riadenie hladiny cukru',
         hormones: ['Inzulín', 'Glukagón', 'Somatostatín', 'Pankreatický polypeptid'],
-        diseases: ['Diabetes mellitus 1. typu', 'Diabetes mellitus 2. typu', 'Hypoglykémia', 'Inzulinóm'],
+        diseases: ['Hypoglykémia', 'Inzulinóm', 'Poruchy hladiny cukru'],
         body: `
             <p>Pankreas (podžalúdková žľaza) má dvojakú funkciu — tráviacu, pri ktorej tvorí tráviace enzýmy, a hormonálnu. Endokrinnú časť tvoria tzv. <strong>Langerhansove ostrovčeky</strong>, ktoré presne regulujú hladinu cukru (glukózy) v krvi.</p>
 
@@ -980,7 +980,7 @@ const glandData = {
                 <li>jemná rovnováha medzi ukladaním a uvoľňovaním glukózy.</li>
             </ul>
 
-            <p class="endo-note">Porucha tvorby alebo účinku inzulínu vedie k cukrovke (diabetes mellitus). Naopak nadmerná tvorba inzulínu (napr. pri inzulinóme) spôsobuje nízku hladinu cukru — hypoglykémiu.</p>
+            <p class="endo-note">Pri poruche tvorby alebo účinku inzulínu sa narúša hladina cukru v krvi. Nadmerná tvorba inzulínu (napr. pri inzulinóme) spôsobuje naopak nízku hladinu cukru — hypoglykémiu.</p>
 
             <table class="endo-table">
                 <thead><tr><th>Hormón</th><th>Hlavná funkcia</th></tr></thead>
