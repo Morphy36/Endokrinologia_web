@@ -1,0 +1,87 @@
+# MUDr. Zuzana Samcová – Endokrinológia Žilina (úplný prehľad)
+
+> Endokrinologická ambulancia v Žiline. Odborná diagnostika a liečba hormonálnych ochorení
+> s individuálnym, ľudským a holistickým prístupom založeným na medicíne dôkazov (EBM).
+> Toto je rozšírená verzia pre AI/LLM. Stručné zhrnutie: /llms.txt
+
+Hlavná stránka: https://morphy36.github.io/Endokrinologia_web/
+
+---
+
+## O lekárke a ambulancii
+
+MUDr. Zuzana Samcová je špecialistka v odbore endokrinológia. Od apríla 2026 pôsobí
+v Endokrinologickej ambulancii v budove Medivi na adrese M. R. Štefánika 842/47,
+010 01 Žilina (2. poschodie).
+
+- Ambulancia prijíma nových pacientov, bez dlhého čakania. Na objednanie stačí výmenný
+  lístok od všeobecného alebo iného odborného lekára.
+- Zmluvu má so všetkými tromi slovenskými zdravotnými poisťovňami: VšZP, Dôvera, Union.
+- Prístup ku každému pacientovi je individuálny, ľudský a holistický, s rešpektom k jeho
+  potrebám a v súlade s princípmi medicíny založenej na dôkazoch (evidence-based medicine).
+
+## Vzdelanie a prax
+
+- Absolventka Lekárskej fakulty Univerzity Palackého v Olomouci.
+- Klinické skúsenosti získala vo Fakultnej nemocnici v Žiline, v Nemocnici Třinec
+  a na NsP Považská Bystrica, kde pracovala na internom oddelení.
+- Práve na internom oddelení sa začala venovať endokrinológii; atestáciu z endokrinológie
+  získala v roku 2023 na SZÚ v Bratislave.
+
+## Oblasti starostlivosti (čo lieči)
+
+1. Ochorenia štítnej žľazy – komplexná diagnostika a liečba, vrátane ultrazvuku,
+   tenkoihlovej aspiračnej biopsie (FNAB) uzlov a evakuácie (odsatia) cýst štítnej žľazy.
+2. Obezita a poruchy metabolizmu – diagnostika a liečba s individuálnym a holistickým prístupom.
+3. Osteoporóza – diagnostika, liečba a prevencia; starostlivosť o zdravie kostí.
+4. Hormónové poruchy – poruchy tvorby a rovnováhy hormónov u žien aj mužov.
+5. Ochorenia nadobličiek a hypofýzy – diagnostika a liečba súvisiacej hormonálnej nerovnováhy.
+
+## Endokrinný systém (edukačný prehľad žliaz)
+
+- Hypofýza – nadradené riadiace centrum; adenohypofýza (GH, TSH, ACTH, FSH, LH, prolaktín),
+  neurohypofýza (ADH, oxytocín). Poruchy: akromegália, hypopituitarizmus, prolaktinóm,
+  Cushingova choroba, diabetes insipidus.
+- Štítna žľaza – hormóny T4, T3, kalcitonín; riadi metabolizmus. Výkony: ultrazvuk,
+  FNAB uzlov, evakuácia cýst.
+- Prištítne telieska – parathormón (PTH), hospodárenie s vápnikom a fosforom.
+- Nadobličky – kôra (aldosterón, kortizol, DHEA/DHEAS, androstendión) a dreň (adrenalín,
+  noradrenalín); regulácia tlaku, stresu a metabolizmu.
+- Pankreas (endokrinná časť) – inzulín, glukagón, somatostatín; regulácia hladiny cukru.
+- Pohlavné žľazy – vaječníky (estrogén, progesterón) a semenníky (testosterón).
+
+## Priebeh návštevy
+
+1. Objednanie – telefonicky počas telefonických hodín (8:00–14:00) alebo cez formulár;
+   potrebný výmenný lístok.
+2. Príprava – na odber krvi príďte nalačno, keď vás na to upozorní zdravotná sestra.
+3. Vyšetrenie – prvé komplexné vyšetrenie trvá 30–45 minút (anamnéza, klinické vyšetrenie,
+   podľa potreby ultrazvuk štítnej žľazy).
+4. Výsledky a liečba – zrozumiteľné vysvetlenie výsledkov a nastavenie liečby aj kontrol.
+
+## Časté otázky (FAQ)
+
+- Potrebujem výmenný lístok? Áno, na vyšetrenie u endokrinológa je potrebný výmenný lístok.
+- Ako dlho trvá prvé vyšetrenie? Zvyčajne 30–45 minút.
+- Musím prísť na odber nalačno? Nalačno príďte, keď vás na to upozorní zdravotná sestra.
+- Ako vyžiadať opakovaný recept? Telefonicky alebo emailom počas telefonických hodín;
+  podmienkou je platné vyšetrenie nie staršie ako 12 mesiacov.
+- Koľko stojí vyšetrenie? Pri prvom vyšetrení jednorazový poplatok 30 €; ďalšie návštevy
+  a kontroly bez poplatku. Vyšetrenie je hradené zdravotnou poisťovňou.
+- Prijímate nových pacientov? Áno, bez dlhého čakania; stačí výmenný lístok.
+- S ktorými poisťovňami máte zmluvu? So všetkými tromi (VšZP, Dôvera, Union).
+- Aké ochorenia liečite? Štítna žľaza, obezita a poruchy metabolizmu, osteoporóza,
+  poruchy hypofýzy, nadobličiek a pohlavných hormónov.
+
+## Kontakt a ordinačné hodiny
+
+- Adresa: M. R. Štefánika 842/47, 010 01 Žilina, budova Medivi, 2. poschodie
+- Telefón: 041 451 0421
+- Email: endo@medivasa.sk
+- Ordinačné hodiny: Pondelok – Piatok 7:00 – 15:00
+- Telefonické hodiny / objednávanie: Pondelok – Piatok 8:00 – 14:00
+- Doprava: MHD zastávka Nám. Ľ. Štúra; parkovanie dostupné pri budove
+
+## Poznámka
+
+Stránka je momentálne v skúšobnej technickej prevádzke — niektoré údaje a funkcie sa môžu meniť.
