@@ -1,38 +1,48 @@
 # MUDr. Zuzana Samcová – Endokrinológia Žilina
 
-> Endokrinologická ambulancia v Žiline. Odborná diagnostika a liečba hormonálnych ochorení.
+> Endokrinologická ambulancia v Žiline. Odborná diagnostika a liečba hormonálnych ochorení s individuálnym, ľudským a holistickým prístupom založeným na medicíne dôkazov (EBM).
 
 ## O ambulancii
 
-MUDr. Zuzana Samcová je špecialistka v odbore **endokrinológia** s viac ako 11 rokmi praxe.
-Ambulancia sa nachádza v budove **Medivi** na adrese M. R. Štefánika 842/47, 010 01 Žilina (2. poschodie).
+MUDr. Zuzana Samcová je špecialistka v odbore **endokrinológia**. Ambulancia sa nachádza
+v budove **Medivi** na adrese M. R. Štefánika 842/47, 010 01 Žilina (2. poschodie).
 
-Prijíma pacientov všetkých troch slovenských zdravotných poisťovní: **VšZP, Dôvera, Union**.
+- **Prijíma nových pacientov** (stačí výmenný lístok od lekára), objednanie bez dlhého čakania.
+- Zmluvu má so všetkými tromi slovenskými zdravotnými poisťovňami (VšZP, Dôvera, Union).
+- Prístup: individuálny, ľudský a holistický, v súlade s princípmi medicíny založenej na dôkazoch (EBM).
 
 ## Čo lieči
 
-- **Ochorenia štítnej žľazy** – hypotyreóza, hypertyreóza, Gravesova choroba, Hashimotova tyreoiditída, strumy, uzliny
-- **Diabetes mellitus** – typ 1, typ 2, inzulinoterapia, kontinuálny monitoring glukózy
-- **Obezita a metabolický syndróm** – komplexná liečba nadváhy, inzulínová rezistencia
-- **Hormónové poruchy** – poruchy hypofýzy (GH, prolaktín, ACTH, TSH), nadobličiek, pohlavných žliaz
-- **Osteoporóza** – diagnostika denzitometriou, liečba, prevencia zlomenín
-- **Ochorenia nadobličiek a hypofýzy** – Cushingov syndróm, Addisonova choroba, akromegália
+- **Ochorenia štítnej žľazy** – vrátane ultrazvuku, tenkoihlovej aspiračnej biopsie (FNAB) uzlov a evakuácie cýst
+- **Obezita a poruchy metabolizmu**
+- **Osteoporóza** – diagnostika, liečba a prevencia
+- **Hormónové poruchy** – poruchy tvorby a rovnováhy hormónov u žien aj mužov
+- **Ochorenia nadobličiek a hypofýzy**
 
 ## Kontakt
 
 - **Adresa:** M. R. Štefánika 842/47, 010 01 Žilina, budova Medivi, 2. poschodie
 - **Telefón:** 041 451 0421
+- **Email:** endo@medivasa.sk
 - **Ordinačné hodiny:** Pondelok – Piatok 7:00 – 15:00
+- **Objednávanie / telefonické hodiny:** Pondelok – Piatok 8:00 – 14:00
+
+## Praktické informácie pre pacientov
+
+- **Poplatok pri prvom vyšetrení: 30 €.** Za ďalšie návštevy a kontroly sa už neplatí.
+- Na objednanie je potrebný **výmenný lístok** od všeobecného alebo iného odborného lekára.
+- Prvé vyšetrenie trvá zvyčajne 30–45 minút (anamnéza, klinické vyšetrenie, podľa potreby ultrazvuk).
+- Na odber krvi príďte nalačno, keď vás na to upozorní zdravotná sestra.
+- eRecept na chronické lieky: telefonicky alebo emailom počas telefonických hodín; podmienkou je platné vyšetrenie nie staršie ako 12 mesiacov.
 
 ## Vzdelanie a prax
 
-- Absolventka Lekárskej fakulty, Univerzita Komenského Bratislava
-- Odborná prax: NsP Považská Bystrica (pneumologické oddelenie, interné oddelenie)
-- Atestácia z vnútorného lekárstva
-- Atestácia z endokrinológie
-- Aktuálne: endokrinologická ambulancia, budova Medivi, Žilina
+- Absolventka Lekárskej fakulty Univerzity Palackého v Olomouci
+- Klinické skúsenosti: Fakultná nemocnica Žilina, Nemocnica Třinec, NsP Považská Bystrica (interné oddelenie)
+- Atestácia z endokrinológie (2023, SZÚ Bratislava)
+- Od apríla 2026 pôsobí v Endokrinologickej ambulancii v budove Medivi v Žiline
 
 ## Web
 
 - Hlavná stránka: https://morphy36.github.io/Endokrinologia_web/
-- Sekcie: O mne · Služby · Pre pacientov · Kontakt
+- Sekcie: O mne · Služby · Endokrinný systém (interaktívna mapa) · Priebeh návštevy · Pre pacientov · Časté otázky · Kontakt

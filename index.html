@@ -10,7 +10,17 @@
     <meta name="keywords" content="endokrinológia, Žilina, štítna žľaza, hormóny, MUDr. Samcová, Medivi, obezita, osteoporóza, nadobličky, hypofýza">
     <meta name="author" content="MUDr. Zuzana Samcová">
     <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="https://morphy36.github.io/Endokrinologia_web/">
+
+    <!-- Local / geo signals -->
+    <meta name="geo.region" content="SK-ZI">
+    <meta name="geo.placename" content="Žilina">
+    <meta name="geo.position" content="49.2231;18.7394">
+    <meta name="ICBM" content="49.2231, 18.7394">
+
+    <!-- AI / LLM summary -->
+    <link rel="alternate" type="text/markdown" title="Zhrnutie pre AI (llms.txt)" href="/Endokrinologia_web/llms.txt">
 
     <!-- Favicon & PWA -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -77,8 +87,24 @@
           ],
           "medicalSpecialty": "Endocrinology",
           "hasMap": "https://maps.google.com/?q=M.+R.+Štefánika+842/47,+Žilina",
-          "priceRange": "Zdravotná poisťovňa VšZP, Dôvera, Union",
-          "paymentAccepted": "Zdravotné poistenie"
+          "priceRange": "€€",
+          "currenciesAccepted": "EUR",
+          "paymentAccepted": "Zdravotné poistenie (VšZP, Dôvera, Union), hotovosť",
+          "areaServed": [
+            { "@type": "City", "name": "Žilina" },
+            { "@type": "AdministrativeArea", "name": "Žilinský kraj" }
+          ],
+          "email": "endo@medivasa.sk",
+          "availableService": [
+            { "@type": "MedicalTherapy", "name": "Diagnostika a liečba ochorení štítnej žľazy" },
+            { "@type": "MedicalProcedure", "name": "Ultrazvuk štítnej žľazy" },
+            { "@type": "MedicalProcedure", "name": "Tenkoihlová aspiračná biopsia (FNAB) uzlov štítnej žľazy" },
+            { "@type": "MedicalProcedure", "name": "Evakuácia cýst štítnej žľazy" },
+            { "@type": "MedicalTherapy", "name": "Liečba obezity a porúch metabolizmu" },
+            { "@type": "MedicalTherapy", "name": "Diagnostika, liečba a prevencia osteoporózy" },
+            { "@type": "MedicalTherapy", "name": "Liečba hormonálnych porúch" },
+            { "@type": "MedicalTherapy", "name": "Diagnostika a liečba porúch nadobličiek a hypofýzy" }
+          ]
         },
         {
           "@type": "FAQPage",
@@ -106,6 +132,16 @@
             },
             {
               "@type": "Question",
+              "name": "Koľko stojí vyšetrenie?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Pri prvom vyšetrení sa hradí jednorazový poplatok 30 €. Za ďalšie návštevy a kontroly sa už neplatí. Vyšetrenie je hradené zdravotnou poisťovňou (VšZP, Dôvera, Union)." }
+            },
+            {
+              "@type": "Question",
+              "name": "Prijímate nových pacientov?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Áno, ambulancia prijíma nových pacientov. Na objednanie stačí výmenný lístok od všeobecného alebo iného odborného lekára; objednanie prebieha bez dlhého čakania." }
+            },
+            {
+              "@type": "Question",
               "name": "Aké ochorenia liečite?",
               "acceptedAnswer": { "@type": "Answer", "text": "Venujeme sa ochoreniam štítnej žľazy, obezite a poruchám metabolizmu, osteoporóze, poruchám hypofýzy, nadobličiek a pohlavných hormónov." }
             },
@@ -130,8 +166,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=20260615b">
-    <link rel="stylesheet" href="css/animations.css?v=20260615b">
+    <link rel="stylesheet" href="css/style.css?v=20260615c">
+    <link rel="stylesheet" href="css/animations.css?v=20260615c">
 
     <!-- Apply trial-banner dismissal before paint (no flash / layout shift) -->
     <script>
@@ -938,6 +974,36 @@
 
                     <div class="accordion-item" role="listitem">
                         <button class="accordion-header" aria-expanded="false">
+                            <div class="accordion-icon"><i class="fa-solid fa-euro-sign"></i></div>
+                            <span>Koľko stojí vyšetrenie?</span>
+                            <i class="fa-solid fa-chevron-down accordion-arrow" aria-hidden="true"></i>
+                        </button>
+                        <div class="accordion-body" role="region">
+                            <div class="accordion-body-inner">
+                                <p>Pri <strong>prvom vyšetrení</strong> sa hradí jednorazový poplatok
+                                <strong>30 €</strong>. Za ďalšie návštevy a kontroly sa už neplatí.
+                                Vyšetrenie je hradené zdravotnou poisťovňou.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" role="listitem">
+                        <button class="accordion-header" aria-expanded="false">
+                            <div class="accordion-icon"><i class="fa-solid fa-user-plus"></i></div>
+                            <span>Prijímate nových pacientov?</span>
+                            <i class="fa-solid fa-chevron-down accordion-arrow" aria-hidden="true"></i>
+                        </button>
+                        <div class="accordion-body" role="region">
+                            <div class="accordion-body-inner">
+                                <p>Áno, ambulancia <strong>prijíma nových pacientov</strong> — bez dlhého
+                                čakania. Na objednanie stačí výmenný lístok od všeobecného alebo iného
+                                odborného lekára.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" role="listitem">
+                        <button class="accordion-header" aria-expanded="false">
                             <div class="accordion-icon"><i class="fa-solid fa-stethoscope"></i></div>
                             <span>Aké ochorenia liečite?</span>
                             <i class="fa-solid fa-chevron-down accordion-arrow" aria-hidden="true"></i>
@@ -1177,6 +1243,6 @@
         Objednať sa
     </a>
 
-    <script src="js/main.js?v=20260615b"></script>
+    <script src="js/main.js?v=20260615c"></script>
 </body>
 </html>
