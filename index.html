@@ -54,7 +54,17 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "WebSite",
+          "@id": "https://morphy36.github.io/Endokrinologia_web/#website",
+          "url": "https://morphy36.github.io/Endokrinologia_web/",
+          "name": "Endokrinológia Žilina – MUDr. Zuzana Samcová",
+          "inLanguage": "sk-SK",
+          "publisher": { "@id": "https://morphy36.github.io/Endokrinologia_web/#clinic" }
+        },
+        {
           "@type": "Physician",
+          "image": "https://morphy36.github.io/Endokrinologia_web/og-image.png",
+          "isAcceptingNewPatients": true,
           "@id": "https://morphy36.github.io/Endokrinologia_web/#physician",
           "name": "MUDr. Zuzana Samcová",
           "jobTitle": "Endokrinológ",
@@ -70,6 +80,8 @@
           "name": "Endokrinologická ambulancia – MUDr. Zuzana Samcová",
           "description": "Endokrinologická ambulancia v Žiline zameraná na liečbu štítnej žľazy, obezity, osteoporózy a hormonálnych porúch.",
           "url": "https://morphy36.github.io/Endokrinologia_web/",
+          "image": "https://morphy36.github.io/Endokrinologia_web/og-image.png",
+          "logo": "https://morphy36.github.io/Endokrinologia_web/favicon.svg",
           "telephone": "+421414510421",
           "address": {
             "@type": "PostalAddress",
@@ -164,11 +176,13 @@
 
     <!-- Font Awesome -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Ikony sa načítajú bez blokovania vykreslenia (rýchlejší LCP / Core Web Vitals) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=20260615c">
-    <link rel="stylesheet" href="css/animations.css?v=20260615c">
+    <link rel="stylesheet" href="css/style.css?v=20261117">
+    <link rel="stylesheet" href="css/animations.css?v=20261117">
 
     <!-- Apply trial-banner dismissal before paint (no flash / layout shift) -->
     <script>
@@ -1244,6 +1258,6 @@
         Objednať sa
     </a>
 
-    <script src="js/main.js?v=20260615c"></script>
+    <script src="js/main.js?v=20261117"></script>
 </body>
 </html>

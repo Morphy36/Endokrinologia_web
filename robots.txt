@@ -57,3 +57,19 @@ Allow: /
 
 User-agent: Meta-ExternalAgent
 Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+# Agresívne SEO scrapery — spomaliť / zablokovať (šetrí server)
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

@@ -672,6 +672,9 @@ h1, h2, h3, h4 {
     background:
         linear-gradient(135deg, rgba(248,250,252,0.96) 0%, rgba(240,253,250,0.94) 100%),
         url('../assets/images/services_bg.jpg') center / cover no-repeat fixed;
+    background:
+        linear-gradient(135deg, rgba(248,250,252,0.96) 0%, rgba(240,253,250,0.94) 100%),
+        image-set(url('../assets/images/services_bg.webp') type('image/webp'), url('../assets/images/services_bg.jpg') type('image/jpeg')) center / cover no-repeat fixed;
 }
 .section-dark { background: var(--bg-dark); color: white; }
 
@@ -680,6 +683,9 @@ h1, h2, h3, h4 {
     background:
         linear-gradient(to right, rgba(255,255,255,0.97) 30%, rgba(248,250,252,0.93) 100%),
         url('../assets/images/about_bg.jpg') center / cover no-repeat;
+    background:
+        linear-gradient(to right, rgba(255,255,255,0.97) 30%, rgba(248,250,252,0.93) 100%),
+        image-set(url('../assets/images/about_bg.webp') type('image/webp'), url('../assets/images/about_bg.jpg') type('image/jpeg')) center / cover no-repeat;
 }
 
 /* ============================================
@@ -691,6 +697,9 @@ h1, h2, h3, h4 {
     background:
         linear-gradient(135deg, rgba(7,89,81,0.82) 0%, rgba(91,33,182,0.78) 100%),
         url('../assets/images/banner_bg.jpg') center / cover no-repeat fixed;
+    background:
+        linear-gradient(135deg, rgba(7,89,81,0.82) 0%, rgba(91,33,182,0.78) 100%),
+        image-set(url('../assets/images/banner_bg.webp') type('image/webp'), url('../assets/images/banner_bg.jpg') type('image/jpeg')) center / cover no-repeat fixed;
     display: flex;
     align-items: center;
     overflow: hidden;
