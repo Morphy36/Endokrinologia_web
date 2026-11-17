@@ -181,32 +181,14 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=20261117">
-    <link rel="stylesheet" href="css/animations.css?v=20261117">
+    <link rel="stylesheet" href="css/style.css?v=20261118">
+    <link rel="stylesheet" href="css/animations.css?v=20261118">
 
-    <!-- Apply trial-banner dismissal before paint (no flash / layout shift) -->
-    <script>
-        try {
-            if (localStorage.getItem('trialBannerDismissed') === '1') {
-                document.documentElement.classList.add('trial-dismissed');
-            }
-        } catch (e) {}
-    </script>
 </head>
 <body>
     <!-- Skip to content (a11y) -->
     <a class="skip-link" href="#main">Preskočiť na obsah</a>
 
-    <!-- Skúšobná technická prevádzka — oznamovací pruh -->
-    <div class="trial-banner" id="trialBanner" role="status">
-        <span class="trial-banner-text">
-            <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
-            Stránka je momentálne v <strong>skúšobnej technickej prevádzke</strong> — niektoré údaje a funkcie sa môžu meniť.
-        </span>
-        <button class="trial-banner-close" id="trialBannerClose" aria-label="Zavrieť oznámenie">
-            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-        </button>
-    </div>
 
     <!-- Cursor glow -->
     <div class="cursor-glow" id="cursorGlow"></div>
@@ -1231,10 +1213,6 @@
                 </div>
             </div>
 
-            <div class="footer-trial">
-                <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
-                Stránka je v skúšobnej technickej prevádzke.
-            </div>
 
             <div class="footer-bottom">
                 <p>&copy; 2026 MUDr. Zuzana Samcová. Všetky práva vyhradené.</p>
@@ -1258,6 +1236,6 @@
         Objednať sa
     </a>
 
-    <script src="js/main.js?v=20261117"></script>
+    <script src="js/main.js?v=20261118"></script>
 </body>
 </html>
