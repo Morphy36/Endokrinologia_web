@@ -23,7 +23,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://endokrinologia-zilina.sk"
-VERSION = "20261118b"
+VERSION = "20261118c"
 LAYOUT = (ROOT / "templates/layout.html").read_text(encoding="utf-8")
 DOCTOR_ID = f"{SITE}/#physician"
 CLINIC_ID = f"{SITE}/#clinic"

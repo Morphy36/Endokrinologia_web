@@ -3005,3 +3005,20 @@ textarea:focus-visible,
     .nav-link { padding: 8px 9px; font-size: 0.84rem; }
     .nav-cta { padding: 8px 13px; margin-left: 4px; }
 }
+
+/* Varovanie a zdroje v článkoch */
+.article-alert {
+    display: flex;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: var(--r-sm);
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    color: #991B1B;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.article-alert i { margin-top: 4px; }
+.article-alert strong { color: #7F1D1D; }
+.article-body .article-sources { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.article-body .article-sources li + li { margin-top: 0.35em; }

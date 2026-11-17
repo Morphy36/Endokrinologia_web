@@ -91,5 +91,7 @@ Stránka je momentálne v skúšobnej technickej prevádzke — niektoré údaje
 
 - Články: https://endokrinologia-zilina.sk/clanky/
   - [Čo je endokrinológia a prečo je dôležitá](https://endokrinologia-zilina.sk/clanky/co-je-endokrinologia/): Endokrinológia sa zaoberá hormónmi a žľazami, ktoré ich tvoria. Vysvetľujeme, čo endokrinológ lieči, ktoré príznaky môžu signalizovať hormonálnu poruchu a kedy ísť k lekárovi.
+  - [Hyperfunkcia štítnej žľazy (hypertyreóza): príznaky, príčiny a liečba](https://endokrinologia-zilina.sk/clanky/hyperfunkcia-stitnej-zlazy/): Búšenie srdca, chudnutie, potenie a nervozita môžu signalizovať zvýšenú funkciu štítnej žľazy. Vysvetľujeme príčiny hypertyreózy, diagnostiku a možnosti liečby.
+  - [Moderné lieky na chudnutie: Wegovy a Mounjaro – výhody a riziká](https://endokrinologia-zilina.sk/clanky/lieky-na-chudnutie-wegovy-mounjaro/): Ako fungujú injekčné lieky na obezitu Wegovy (semaglutid) a Mounjaro (tirzepatid), koľko sa s nimi dá schudnúť, pre koho sú vhodné a aké majú nežiaduce účinky.
 - Poradňa (otázky pacientov, odpovedá lekárka): https://endokrinologia-zilina.sk/poradna/
 <!-- obsah:end -->
