@@ -14,4 +14,4 @@ rsync -az --delete \
   -e "ssh -i $KEY" ./ "$SERVER:$TARGET"
 
 echo "Nahraté. Kontrola:"
-curl -s -o /dev/null -w "  %{http_code}  %{url_effective}\n" "https://endo.37-27-84-175.sslip.io/" || true
+curl -s -o /dev/null -w "  %{http_code}  %{url_effective}\n" "https://endokrinologia-zilina.sk/" || true

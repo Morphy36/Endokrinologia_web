@@ -4,7 +4,7 @@
 > s individuálnym, ľudským a holistickým prístupom založeným na medicíne dôkazov (EBM).
 > Toto je rozšírená verzia pre AI/LLM. Stručné zhrnutie: /llms.txt
 
-Hlavná stránka: https://morphy36.github.io/Endokrinologia_web/
+Hlavná stránka: https://endokrinologia-zilina.sk/
 
 ---
 

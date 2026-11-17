@@ -2,9 +2,9 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://morphy36.github.io/Endokrinologia_web/sitemap.xml
+Sitemap: https://endokrinologia-zilina.sk/sitemap.xml
 
-# Zhrnutie pre AI / LLM: https://morphy36.github.io/Endokrinologia_web/llms.txt
+# Zhrnutie pre AI / LLM: https://endokrinologia-zilina.sk/llms.txt
 
 # AI crawlers — explicitly welcome
 User-agent: GPTBot

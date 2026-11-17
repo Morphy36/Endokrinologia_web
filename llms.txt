@@ -44,9 +44,9 @@ v budove **Medivi** na adrese M. R. Štefánika 842/47, 010 01 Žilina (2. posch
 
 ## Web
 
-- Hlavná stránka: https://morphy36.github.io/Endokrinologia_web/
+- Hlavná stránka: https://endokrinologia-zilina.sk/
 - Sekcie: O mne · Služby · Endokrinný systém (interaktívna mapa) · Priebeh návštevy · Pre pacientov · Časté otázky · Kontakt
 
 ## Ďalšie zdroje
 
-- Rozšírený prehľad pre AI: https://morphy36.github.io/Endokrinologia_web/llms-full.txt
+- Rozšírený prehľad pre AI: https://endokrinologia-zilina.sk/llms-full.txt

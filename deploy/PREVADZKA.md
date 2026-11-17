@@ -3,7 +3,12 @@
 Statický web (bez databázy a bez Dockeru) – nginx servíruje súbory z `/var/www/endokrinologia`.
 Server je ten istý ako pri Ledňáčikovi: `ssh -i ~/.ssh/hetzner_evidencia advokat@37.27.84.175`.
 
-Dočasná adresa (kým nie je doména): https://endo.37-27-84-175.sslip.io
+Adresa: **https://endokrinologia-zilina.sk** (DNS u Websupportu, A záznamy `@` a `www` → 37.27.84.175).
+`www`, `http://` a stará dočasná adresa endo.37-27-84-175.sslip.io presmerujú (301) na ňu.
+Certifikát Let's Encrypt `endokrinologia-zilina.sk` (aj www) obnovuje certbot sám.
+
+GitHub Pages (morphy36.github.io/Endokrinologia_web) beží z vetvy `gh-pages`, ktorá len presmeruje na doménu.
+Vetva `main` je zdroj webu – nasadzuje sa výhradne cez `deploy/deploy.sh`.
 
 ## Prvé nastavenie (raz)
 
@@ -25,9 +30,10 @@ Certifikát sa získa ešte pred zapnutím konfigurácie (nginx by inak nepreši
 
 ```bash
 deploy/deploy.sh
+scripts/indexnow-ping.sh https://endokrinologia-zilina.sk
 ```
 
-## Prechod na vlastnú doménu
+## Prechod (hotovo 17. 11. 2026) na vlastnú doménu
 
 1. U registrátora nastav DNS: `A  @  37.27.84.175` a `A  www  37.27.84.175`.
 2. V projekte: `scripts/set-domain.sh https://DOMENA` (prepíše canonical, OG, JSON-LD, sitemap, robots, llms.txt), commit.
