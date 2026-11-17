@@ -152,40 +152,54 @@ function updateBackToTop() {
 backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 /* ============================================
-   Contact Form
+   Formuláre (Kontakt + Poradňa) – Web3Forms
+   Kým nie je nastavený access_key, formulár otvorí e-mail
+   s vyplneným textom (nič sa nestratí).
    ============================================ */
-const contactForm = document.getElementById('contactForm');
-const formSuccess = document.getElementById('formSuccess');
-const submitBtn   = document.getElementById('submitBtn');
+const FORM_EMAIL = 'endo@medivasa.sk';
 
-if (contactForm) {
-    const resetBtn = (delay = 6000) => setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Odoslať správu';
-        submitBtn.style.background = '';
-        formSuccess.classList.remove('show');
+document.querySelectorAll('#contactForm, .js-web3form').forEach(form => {
+    const btn     = form.querySelector('button[type="submit"]');
+    const success = form.querySelector('.form-success');
+    const btnHTML = btn.innerHTML;
+
+    const reset = (delay) => setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = btnHTML;
+        btn.style.background = '';
+        success && success.classList.remove('show');
     }, delay);
 
     const showError = (msg) => {
-        submitBtn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ' + msg;
-        submitBtn.style.background = 'linear-gradient(135deg,#DC2626,#EF4444)';
-        resetBtn(5000);
+        btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ' + msg;
+        btn.style.background = 'linear-gradient(135deg,#DC2626,#EF4444)';
+        reset(5000);
     };
 
-    contactForm.addEventListener('submit', async e => {
-        e.preventDefault();
+    const mailtoFallback = (data) => {
+        const skip = ['access_key', 'subject', 'from_name', 'botcheck'];
+        const body = Object.entries(data)
+            .filter(([k, v]) => !skip.includes(k) && v)
+            .map(([k, v]) => `${k}: ${v}`).join('\n');
+        location.href = `mailto:${FORM_EMAIL}?subject=${encodeURIComponent(data.subject || 'Správa z webu')}` +
+                        `&body=${encodeURIComponent(body)}`;
+        reset(1500);
+    };
 
-        // Native validation (required fields + GDPR checkbox)
-        if (!contactForm.checkValidity()) {
-            contactForm.reportValidity();
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+
+        const data = Object.fromEntries(new FormData(form).entries());
+        if (data.botcheck) return;                       // honeypot
+
+        if (!data.access_key || data.access_key.startsWith('REPLACE')) {
+            mailtoFallback(data);
             return;
         }
 
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Odosielam...';
-
-        const data = Object.fromEntries(new FormData(contactForm).entries());
-
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Odosielam...';
         try {
             const res = await fetch('https://api.web3forms.com/submit', {
                 method:  'POST',
@@ -193,15 +207,17 @@ if (contactForm) {
                 body:    JSON.stringify(data)
             });
             const json = await res.json();
-
             if (res.ok && json.success) {
-                submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Odoslané!';
-                submitBtn.style.background = 'linear-gradient(135deg,#059669,#10B981)';
-                formSuccess.classList.add('show');
-                contactForm.reset();
-                resetBtn(6000);
+                btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Odoslané!';
+                btn.style.background = 'linear-gradient(135deg,#059669,#10B981)';
+                if (success) {
+                    const t = success.querySelector('.form-success-text');
+                    if (t && form.dataset.success) t.textContent = form.dataset.success;
+                    success.classList.add('show');
+                }
+                form.reset();
+                reset(6000);
             } else {
-                // Most common cause: access_key still set to the placeholder
                 showError('Skúste neskôr');
                 console.error('Web3Forms error:', json);
             }
@@ -210,7 +226,7 @@ if (contactForm) {
             console.error('Form submit failed:', err);
         }
     });
-}
+});
 
 /* ============================================
    Active nav link on scroll (highlight)

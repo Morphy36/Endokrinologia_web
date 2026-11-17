@@ -85,3 +85,11 @@ v Endokrinologickej ambulancii v budove Medivi na adrese M. R. Štefánika 842/4
 ## Poznámka
 
 Stránka je momentálne v skúšobnej technickej prevádzke — niektoré údaje a funkcie sa môžu meniť.
+
+<!-- obsah:start -->
+## Články a poradňa
+
+- Články: https://endokrinologia-zilina.sk/clanky/
+  - [Čo je endokrinológia a prečo je dôležitá](https://endokrinologia-zilina.sk/clanky/co-je-endokrinologia/): Endokrinológia sa zaoberá hormónmi a žľazami, ktoré ich tvoria. Vysvetľujeme, čo endokrinológ lieči, ktoré príznaky môžu signalizovať hormonálnu poruchu a kedy ísť k lekárovi.
+- Poradňa (otázky pacientov, odpovedá lekárka): https://endokrinologia-zilina.sk/poradna/
+<!-- obsah:end -->

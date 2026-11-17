@@ -43,3 +43,18 @@ scripts/indexnow-ping.sh https://endokrinologia-zilina.sk
 5. Google Search Console + Bing Webmaster Tools: pridať doménu, odoslať `sitemap.xml`.
 6. GitHub Pages: nahradiť `index.html` presmerovaním (`<meta http-equiv="refresh">` + canonical na novú doménu),
    aby sa nová doména nekonkurovala sama so sebou.
+
+## Články a poradňa
+
+Podstránky `/clanky/` a `/poradna/` generuje `scripts/build.py` zo súborov v `content/`
+(šablóna `templates/layout.html`). Vygenerované priečinky `clanky/`, `poradna/` a `sitemap.xml` ručne neupravuj.
+
+```bash
+# nový článok: content/clanky/<adresa>.html  |  nová odpoveď: content/poradna/<adresa>.html (formát v content/poradna/README.md)
+python3 scripts/build.py
+deploy/deploy.sh
+scripts/indexnow-ping.sh https://endokrinologia-zilina.sk
+```
+
+Formuláre (kontakt aj poradňa) posielajú cez Web3Forms. Kým je v `index.html` a `scripts/build.py`
+namiesto kľúča `REPLACE_WITH_WEB3FORMS_ACCESS_KEY`, formulár otvorí e-mail na endo@medivasa.sk s vyplneným textom.

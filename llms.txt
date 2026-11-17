@@ -46,7 +46,16 @@ v budove **Medivi** na adrese M. R. Štefánika 842/47, 010 01 Žilina (2. posch
 
 - Hlavná stránka: https://endokrinologia-zilina.sk/
 - Sekcie: O mne · Služby · Endokrinný systém (interaktívna mapa) · Priebeh návštevy · Pre pacientov · Časté otázky · Kontakt
+- Podstránky: Články (https://endokrinologia-zilina.sk/clanky/) · Poradňa (https://endokrinologia-zilina.sk/poradna/)
 
 ## Ďalšie zdroje
 
 - Rozšírený prehľad pre AI: https://endokrinologia-zilina.sk/llms-full.txt
+
+<!-- obsah:start -->
+## Články a poradňa
+
+- Články: https://endokrinologia-zilina.sk/clanky/
+  - [Čo je endokrinológia a prečo je dôležitá](https://endokrinologia-zilina.sk/clanky/co-je-endokrinologia/): Endokrinológia sa zaoberá hormónmi a žľazami, ktoré ich tvoria. Vysvetľujeme, čo endokrinológ lieči, ktoré príznaky môžu signalizovať hormonálnu poruchu a kedy ísť k lekárovi.
+- Poradňa (otázky pacientov, odpovedá lekárka): https://endokrinologia-zilina.sk/poradna/
+<!-- obsah:end -->

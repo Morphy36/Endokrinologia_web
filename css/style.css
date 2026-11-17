@@ -2717,3 +2717,291 @@ textarea:focus-visible,
     50%      { background-position: 100% 50%; }
 }
 
+
+/* ============================================
+   ✦ PODSTRÁNKY – Články a Poradňa (generuje scripts/build.py)
+   ============================================ */
+.page-hero {
+    position: relative;
+    padding: 140px 0 64px;
+    color: white;
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(13,148,136,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 80%, rgba(124,58,237,0.32) 0%, transparent 55%),
+        linear-gradient(140deg, rgba(4,38,44,0.98) 0%, rgba(10,22,58,0.98) 45%, rgba(36,10,80,0.97) 100%);
+    overflow: hidden;
+}
+.page-hero .section-eyebrow { color: #5EEAD4; }
+.page-hero-title {
+    font-family: var(--font-h);
+    font-weight: 800;
+    font-size: clamp(2rem, 4.6vw, 3.1rem);
+    line-height: 1.15;
+    margin-bottom: 18px;
+    color: white;
+}
+.page-hero-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.75);
+    max-width: 680px;
+}
+.page-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    margin-top: 26px;
+    font-size: 0.86rem;
+    color: rgba(255,255,255,0.65);
+}
+.page-hero-meta i { color: #5EEAD4; margin-right: 6px; }
+
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+}
+.breadcrumbs a { color: rgba(255,255,255,0.7); transition: var(--t); }
+.breadcrumbs a:hover { color: white; }
+.breadcrumbs i { font-size: 0.6rem; opacity: 0.6; }
+.breadcrumbs [aria-current] { color: rgba(255,255,255,0.9); }
+
+.article-section { padding: 64px 0 96px; background: var(--bg); }
+
+/* Typografia článku */
+.article-body { color: var(--text); font-size: 1.04rem; line-height: 1.8; }
+.article-body > * + * { margin-top: 1.1em; }
+.article-body h2 {
+    font-family: var(--font-h);
+    font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+    line-height: 1.3;
+    margin-top: 2.2em;
+    color: var(--text);
+}
+.article-body h3 {
+    font-family: var(--font-h);
+    font-size: 1.15rem;
+    margin-top: 1.6em;
+    color: var(--primary-dark);
+}
+.article-body h2 + p, .article-body h3 + p { margin-top: 0.6em; }
+.article-body a { color: var(--primary-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.article-body a:hover { color: var(--secondary); }
+.article-body ul, .article-body ol { padding-left: 1.3em; }
+.article-body ul { list-style: disc; }
+.article-body ol { list-style: decimal; }
+.article-body li + li { margin-top: 0.45em; }
+.article-body li::marker { color: var(--primary); }
+.article-intro { font-size: 1.15rem; color: var(--muted); }
+
+.key-points {
+    margin: 2em 0;
+    padding: 24px 28px;
+    border-radius: var(--r);
+    background: linear-gradient(135deg, var(--primary-xlight), var(--secondary-light));
+    border: 1px solid var(--primary-light);
+}
+.article-body .key-points h2 { margin-top: 0; font-size: 1.1rem; color: var(--primary-dark); }
+.key-points ul { margin-top: 10px; }
+
+.symptom-list { columns: 2; column-gap: 32px; }
+.symptom-list li { break-inside: avoid; }
+
+.article-disclaimer {
+    display: flex;
+    gap: 10px;
+    margin-top: 48px;
+    padding: 14px 18px;
+    border-radius: var(--r-sm);
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.6;
+}
+.article-disclaimer i { color: var(--primary); margin-top: 3px; }
+
+.article-cta {
+    display: flex;
+    gap: 22px;
+    margin-top: 32px;
+    padding: 30px;
+    border-radius: var(--r-lg);
+    color: white;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #3B2A8C 100%);
+    box-shadow: var(--shadow-lg);
+}
+.article-cta h2 { font-family: var(--font-h); font-size: 1.3rem; margin-bottom: 8px; color: white; }
+.article-cta p { color: rgba(255,255,255,0.82); line-height: 1.6; }
+.article-cta-icon {
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: grid; place-items: center;
+    background: rgba(255,255,255,0.14);
+    font-size: 1.3rem;
+}
+.article-cta-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+
+.article-more {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 40px;
+    font-family: var(--font-h);
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+.article-more a { color: var(--primary-dark); transition: var(--t); }
+.article-more a:hover { color: var(--secondary); }
+.article-more i { font-size: 0.8rem; }
+
+/* Zoznam článkov */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+.post-card, .qa-item {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border-radius: var(--r-lg);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: var(--t);
+}
+.post-card:hover, .qa-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+.post-card-eyebrow {
+    font-family: var(--font-h);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+.post-card-title { font-family: var(--font-h); font-size: 1.25rem; line-height: 1.35; margin: 10px 0; color: var(--text); }
+.post-card-text { color: var(--muted); font-size: 0.93rem; line-height: 1.65; flex: 1; }
+.post-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+.post-card-more { font-family: var(--font-h); font-weight: 700; color: var(--primary-dark); }
+.post-card-more i { font-size: 0.75rem; margin-left: 4px; transition: transform 0.2s var(--ease); }
+.post-card:hover .post-card-more i { transform: translateX(4px); }
+
+/* Poradňa */
+.poradna-layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; align-items: start; }
+.poradna-h2 { font-family: var(--font-h); font-size: 1.5rem; margin-bottom: 20px; color: var(--text); }
+.poradna-h2--list { margin-top: 72px; }
+.poradna-steps { list-style: none; counter-reset: krok; display: grid; gap: 18px; }
+.poradna-steps li {
+    counter-increment: krok;
+    position: relative;
+    padding-left: 52px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+.poradna-steps li strong { color: var(--text); }
+.poradna-steps li::before {
+    content: counter(krok);
+    position: absolute;
+    left: 0; top: -2px;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: grid; place-items: center;
+    font-family: var(--font-h);
+    font-weight: 800;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+.poradna-note {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 14px 18px;
+    border-radius: var(--r-sm);
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    color: #92400E;
+    font-size: 0.86rem;
+    line-height: 1.6;
+}
+.poradna-note i { margin-top: 3px; }
+.poradna-form-wrap {
+    background: linear-gradient(140deg, #0B2530 0%, #111B3D 55%, #23124F 100%);
+    border: none;
+    box-shadow: var(--shadow-lg);
+}
+.form-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--r-sm);
+    padding: 11px 14px;
+    color: white;
+    font-size: 0.9rem;
+}
+.form-group select option { color: var(--text); }
+.form-group select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(13,148,136,0.2); }
+
+.qa-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.qa-item h3 { font-family: var(--font-h); font-size: 1.1rem; margin: 8px 0; color: var(--text); }
+.qa-item p { color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
+.qa-empty {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 28px;
+    border-radius: var(--r-lg);
+    border: 1px dashed var(--border);
+    background: var(--bg-alt);
+    color: var(--muted);
+}
+.qa-empty i { font-size: 1.8rem; color: var(--primary); }
+
+.qa-question {
+    padding: 24px 28px;
+    border-radius: var(--r);
+    background: var(--bg-alt);
+    border-left: 4px solid var(--secondary);
+    margin-bottom: 32px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+.qa-label {
+    font-family: var(--font-h);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+.qa-label i { margin-right: 6px; }
+
+@media (max-width: 900px) {
+    .poradna-layout { grid-template-columns: 1fr; gap: 36px; }
+    .page-hero { padding: 120px 0 48px; }
+}
+@media (max-width: 600px) {
+    .symptom-list { columns: 1; }
+    .article-cta { flex-direction: column; padding: 24px; }
+    .key-points { padding: 20px; }
+    .article-section { padding: 44px 0 72px; }
+}
+
+/* Menu so 6 položkami – na užších desktopoch tesnejšie, aby sa zmestilo do riadku */
+@media (min-width: 901px) and (max-width: 1080px) {
+    .navbar .container { gap: 12px; }
+    .navbar-nav { gap: 0; }
+    .nav-link { padding: 8px 9px; font-size: 0.84rem; }
+    .nav-cta { padding: 8px 13px; margin-left: 4px; }
+}

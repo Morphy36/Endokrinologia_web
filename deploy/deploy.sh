@@ -9,7 +9,7 @@ KEY="$HOME/.ssh/hetzner_evidencia"
 TARGET="/var/www/endokrinologia/"
 
 rsync -az --delete \
-  --exclude .git --exclude .claude --exclude .DS_Store --exclude deploy --exclude scripts \
+  --exclude .git --exclude .claude --exclude .DS_Store --exclude deploy --exclude scripts --exclude content --exclude templates \
   --exclude '*.log' --exclude node_modules \
   -e "ssh -i $KEY" ./ "$SERVER:$TARGET"
 
